@@ -30,19 +30,25 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <!-- Hero Section con Parallax -->
+    <section class="hero parallax-section" id="home" data-scroll-speed="0.2">
+        <div class="hero-parallax">
+            <div class="hero-layer-1"></div>
+            <div class="hero-layer-2"></div>
+            <div class="hero-layer-3"></div>
+            <div class="hero-layer-4"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
-                <span class="hero-tag">Intermediarios de Seguros</span>
-                <h1>Protección <span>Inteligente</span></h1>
-                <p>Innovamos en intermediación de seguros, fusionando tecnología avanzada y experiencia humana para brindar soluciones personalizadas que protegen lo que más valoras.</p>
+                <span class="hero-tag parallax-mouse" data-speed="-10">Intermediarios de Seguros</span>
+                <h1 class="parallax-mouse" data-speed="-5">Protección <span>Inteligente</span></h1>
+                <p class="parallax-mouse" data-speed="-2">Innovamos en intermediación de seguros, fusionando tecnología avanzada y experiencia humana para brindar soluciones personalizadas que protegen lo que más valoras.</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Solicitar Asesoría</a>
                     <a href="#services" class="btn">Descubrir Servicios</a>
                 </div>
             </div>
-            <div class="hero-image">
+            <div class="hero-image parallax-mouse" data-speed="20">
                 <img src="assets/images/hero-shield.jpg" alt="Protección de Seguros MACOTO">
             </div>
         </div>
@@ -58,7 +64,7 @@
             </div>
             <div class="services-grid">
                 <!-- Featured Service -->
-                <div class="service-card featured">
+                <div class="service-card featured card-3d">
                     <span class="featured-label">Destacado</span>
                     <div class="service-icon">🛡️</div>
                     <h3>Intermediación de Seguros</h3>
@@ -72,7 +78,7 @@
                 </div>
                 
                 <!-- Service 2 -->
-                <div class="service-card">
+                <div class="service-card card-3d">
                     <div class="service-icon">🏢</div>
                     <h3>Seguros Empresariales</h3>
                     <p>Protegemos tu negocio contra riesgos específicos de tu industria, asegurando la continuidad de tus operaciones ante cualquier eventualidad.</p>
@@ -85,7 +91,7 @@
                 </div>
                 
                 <!-- Service 3 -->
-                <div class="service-card">
+                <div class="service-card card-3d">
                     <div class="service-icon">👨‍👩‍👧‍👦</div>
                     <h3>Seguros Personales</h3>
                     <p>Diseñamos planes de protección para ti y tu familia, cubriendo aspectos críticos como salud, vida y patrimonio personal.</p>
@@ -100,13 +106,17 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
+    <!-- About Section con Parallax -->
+    <section class="about parallax-section" id="about" data-scroll-speed="0.1">
+        <div class="about-bg-elements">
+            <div class="about-bg-circle"></div>
+            <div class="about-bg-circle"></div>
+        </div>
         <div class="container about-container">
             <div class="about-content">
                 <span class="section-label">Quiénes Somos</span>
                 <h2>Experiencia y Tecnología a tu Servicio</h2>
-                <p>En MACOTO fusionamos la experiencia de más de 15 años en el sector asegurador con las últimas tecnologías para ofrecer un servicio excepcional y personalizado.</p>
+                <p>En <span>MACOTO</span> fusionamos la experiencia de más de 15 años en el sector asegurador con las últimas tecnologías para ofrecer un servicio excepcional y personalizado.</p>
                 <p>Nuestro equipo de profesionales certificados analiza detalladamente cada caso para encontrar las soluciones más adecuadas, siempre priorizando tus intereses y garantizando una asesoría transparente.</p>
                 <div class="about-stats">
                     <div class="stat-item">
@@ -127,14 +137,14 @@
                     </div>
                 </div>
             </div>
-            <div class="about-image">
+            <div class="about-image parallax-mouse" data-speed="10">
                 <img src="assets/images/team-meeting.jpg" alt="Equipo MACOTO">
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
+    <section class="testimonials parallax-section" id="testimonials" data-scroll-speed="0.15">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Testimonios</span>
@@ -142,7 +152,7 @@
                 <p>La satisfacción de nuestros clientes es nuestro mayor logro y motivación para seguir mejorando</p>
             </div>
             <div class="testimonials-slider">
-                <div class="testimonial-item">
+                <div class="testimonial-item card-3d">
                     <div class="testimonial-content">
                         "La asesoría de MACOTO fue fundamental para encontrar el seguro que realmente necesitaba. Su equipo no solo me ayudó a entender las coberturas sino que me acompañó durante todo el proceso de reclamación cuando lo necesité."
                     </div>
@@ -155,7 +165,7 @@
                     </div>
                 </div>
                 
-                <div class="testimonial-item">
+                <div class="testimonial-item card-3d">
                     <div class="testimonial-content">
                         "Después de comparar varias opciones, MACOTO nos ofreció la mejor solución para asegurar nuestra flota de vehículos. Su servicio personalizado y la rapidez con la que resuelven cualquier incidencia los hace realmente diferentes."
                     </div>
@@ -173,13 +183,14 @@
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
+        <div class="contact-grid"></div>
         <div class="container contact-container">
             <div class="contact-info">
                 <span class="section-label">Contacto</span>
                 <h2>¿Listo para Proteger lo que Importa?</h2>
                 <p>Estamos aquí para asesorarte y resolver todas tus dudas. Contáctanos por cualquiera de estos medios o completa el formulario.</p>
                 
-                <div class="contact-detail">
+                <div class="contact-detail parallax-mouse" data-speed="-5">
                     <div class="contact-icon">📍</div>
                     <div class="contact-text">
                         <h3>Dirección</h3>
@@ -187,7 +198,7 @@
                     </div>
                 </div>
                 
-                <div class="contact-detail">
+                <div class="contact-detail parallax-mouse" data-speed="-3">
                     <div class="contact-icon">📱</div>
                     <div class="contact-text">
                         <h3>Teléfono</h3>
@@ -195,7 +206,7 @@
                     </div>
                 </div>
                 
-                <div class="contact-detail">
+                <div class="contact-detail parallax-mouse" data-speed="-1">
                     <div class="contact-icon">✉️</div>
                     <div class="contact-text">
                         <h3>Email</h3>
@@ -204,21 +215,27 @@
                 </div>
             </div>
             
-            <div class="contact-form">
+            <div class="contact-form card-3d">
                 <form id="contact-form">
                     <div class="form-group">
-                        <input type="text" id="name" placeholder="Nombre completo" required>
+                        <input type="text" id="name" class="form-input" placeholder="">
+                        <label for="name">Nombre completo</label>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" placeholder="Correo electrónico" required>
+                        <input type="email" id="email" class="form-input" placeholder="">
+                        <label for="email">Correo electrónico</label>
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="phone" placeholder="Teléfono (opcional)">
+                        <input type="tel" id="phone" class="form-input" placeholder="">
+                        <label for="phone">Teléfono (opcional)</label>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" placeholder="¿En qué podemos ayudarte?" required></textarea>
+                        <textarea id="message" class="form-input" placeholder=""></textarea>
+                        <label for="message">¿En qué podemos ayudarte?</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    </div>
                 </form>
             </div>
         </div>
