@@ -1847,3 +1847,32 @@ footer::before {
     color: var(--silver-bright);
 }
 
+/* Corrección para ocultar la imagen hero-shield.jpg en versión móvil */
+
+/* En pantallas móviles, ocultar completamente la imagen del héroe */
+@media screen and (max-width: 768px) {
+    /* Ocultar completamente la imagen y su contenedor */
+    .hero-image {
+        display: none !important;
+    }
+    
+    /* Ajustar el contenido del héroe para ocupar todo el ancho */
+    .hero-content {
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+        padding: 40px 0 !important;
+    }
+    
+    /* Asegurar que el contenedor de hero tenga suficiente padding inferior */
+    .hero .container {
+        padding-bottom: 40px !important;
+    }
+}
+
+/* Asegurar que la imagen se muestre en pantallas más grandes */
+@media screen and (min-width: 769px) {
+    .hero-image {
+        display: block !important;
+    }
+}
