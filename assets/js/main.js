@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('header');
     const mobileToggle = document.querySelector('.mobile-toggle');
     const nav = document.querySelector('nav');
-    const navLinks = document.querySelectorAll('nav ul li a');
     
     // ÚNICA ADICIÓN: Eliminar las ruedas de los iconos de servicio
     const styleElement = document.createElement('style');
@@ -71,69 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Smooth scroll para enlaces de anclaje - optimizado para rendimiento
-    if (navLinks.length > 0) {
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                // Cerrar menú móvil si está abierto
-                if (nav.classList.contains('active')) {
-                    nav.classList.remove('active');
-                    mobileToggle.textContent = '☰';
-                }
-
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-
-                if (targetSection) {
-                    // SOLUCIÓN: Usar scrollIntoView en lugar de scrollTo para mejor rendimiento
-                    // y usar un timeout para evitar bloqueo de UI
-                    setTimeout(() => {
-                        targetSection.scrollIntoView({
-                            behavior: 'auto', // Cambiado de 'smooth' a 'auto' para evitar trabado
-                            block: 'start'
-                        });
-                        
-                        // Actualizar clases activas
-                        navLinks.forEach(navLink => navLink.classList.remove('active'));
-                        this.classList.add('active');
-                    }, 10);
-                }
-            });
-        });
-    }
-
-    // Actualizar enlace activo según posición de scroll - Optimizado con throttle
-    let scrollTimeout;
-    window.addEventListener('scroll', function() {
-        if (scrollTimeout) return;
-        
-        scrollTimeout = setTimeout(function() {
-            updateActiveNavLink();
-            scrollTimeout = null;
-        }, 100);
-    });
-    
-    function updateActiveNavLink() {
-        const scrollPosition = window.scrollY + 100; // Compensación para header
-        const sections = document.querySelectorAll('section');
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = '#' + section.getAttribute('id');
-
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === sectionId) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
+    // *** IMPORTANTE: La funcionalidad de scroll ha sido movida a smooth-navigation.js ***
 
     // Formulario de contacto
     const contactForm = document.getElementById('contact-form');
@@ -273,21 +210,21 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Parallax de fondo en scroll optimizado
-        window.addEventListener('scroll', function() {
-            if (isMobile) return; // Desactivar en móviles
-            
-            requestAnimationFrame(function() {
-                const parallaxSections = document.querySelectorAll('.parallax-section');
-                const scrollPosition = window.scrollY;
-                
-                parallaxSections.forEach(section => {
-                    const speed = section.getAttribute('data-scroll-speed') || 0.1;
-                    const yPos = -scrollPosition * speed;
-                    section.style.backgroundPosition = `center ${yPos}px`;
+        // Parallax de fondo en scroll optimizado - DESHABILITADO en móviles para mejorar rendimiento
+        if (!isMobile) {
+            window.addEventListener('scroll', function() {
+                requestAnimationFrame(function() {
+                    const parallaxSections = document.querySelectorAll('.parallax-section');
+                    const scrollPosition = window.scrollY;
+                    
+                    parallaxSections.forEach(section => {
+                        const speed = section.getAttribute('data-scroll-speed') || 0.1;
+                        const yPos = -scrollPosition * speed;
+                        section.style.backgroundPosition = `center ${yPos}px`;
+                    });
                 });
             });
-        });
+        }
     }
     
     // Partículas optimizadas (menos y más eficientes)
@@ -300,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
             servicesSection.appendChild(particlesContainer);
             
             // Reducir el número de partículas para mejor rendimiento
-            const particleCount = isMobile ? 12 : 25;
+            const particleCount = isMobile ? 8 : 15; // Reducido aún más
             
             for (let i = 0; i < particleCount; i++) {
                 createParticle(particlesContainer);
@@ -319,19 +256,19 @@ document.addEventListener('DOMContentLoaded', function() {
         particle.style.top = `${posY}%`;
         
         // Tamaño reducido para mejor rendimiento
-        const size = Math.random() * 3 + 2;
+        const size = Math.random() * 2 + 1; // Tamaños más pequeños
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
         
-        // Opacidad aleatoria
-        particle.style.opacity = Math.random() * 0.3 + 0.1;
+        // Opacidad reducida
+        particle.style.opacity = Math.random() * 0.2 + 0.05; // Menos visible
         
         // Usar will-change y transform3d para mejor rendimiento
         particle.style.willChange = 'transform';
         particle.style.transform = 'translate3d(0, 0, 0)';
         
         // Animación más lenta para mejor rendimiento
-        const animDuration = Math.random() * 20 + 15;
+        const animDuration = Math.random() * 25 + 20; // Más lento
         particle.style.animation = `floatParticle ${animDuration}s linear infinite`;
         particle.style.animationDelay = `-${Math.random() * animDuration}s`;
         
@@ -365,8 +302,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 function updateCard() {
                     // Reducir intensidad del efecto
-                    const rotateY = cardX * 0.005;
-                    const rotateX = -cardY * 0.005;
+                    const rotateY = cardX * 0.003; // Efecto más sutil
+                    const rotateX = -cardY * 0.003; // Efecto más sutil
                     
                     // Usar transform3d para aceleración por hardware
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(5px)`;
@@ -419,34 +356,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             // Fallback para navegadores sin soporte
             animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                element.style.opacity = '1'; // Mostrar de inmediato en fallback
+                element.style.transform = 'none'; // No aplicar transformación
             });
-            
-            let scrollThrottleTimeout;
-            function scrollHandler() {
-                if (scrollThrottleTimeout) return;
-                
-                scrollThrottleTimeout = setTimeout(() => {
-                    const scrollPosition = window.scrollY + window.innerHeight * 0.8;
-                    
-                    animatedElements.forEach(element => {
-                        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-                        
-                        if (scrollPosition > elementPosition) {
-                            element.style.opacity = '1';
-                            element.style.transform = 'translateY(0)';
-                        }
-                    });
-                    
-                    scrollThrottleTimeout = null;
-                }, 100);
-            }
-            
-            // Ejecutar una vez y agregar listener
-            scrollHandler();
-            window.addEventListener('scroll', scrollHandler);
         }
     }
     
@@ -459,29 +371,49 @@ document.addEventListener('DOMContentLoaded', function() {
             // Crear navegación con puntos
             const dotsContainer = document.createElement('div');
             dotsContainer.className = 'slider-dots';
+            dotsContainer.style.display = 'flex';
+            dotsContainer.style.justifyContent = 'center';
+            dotsContainer.style.marginTop = '20px';
             
             testimonialItems.forEach((item, index) => {
                 const dot = document.createElement('span');
                 dot.className = 'slider-dot';
-                if (index === 0) dot.classList.add('active');
+                dot.style.width = '12px';
+                dot.style.height = '12px';
+                dot.style.borderRadius = '50%';
+                dot.style.background = 'rgba(100, 255, 218, 0.3)';
+                dot.style.margin = '0 5px';
+                dot.style.cursor = 'pointer';
+                dot.style.transition = 'all 0.3s ease';
+                
+                if (index === 0) {
+                    dot.style.background = 'rgba(100, 255, 218, 0.9)';
+                    dot.style.transform = 'scale(1.2)';
+                }
                 
                 dot.addEventListener('click', () => {
-                    // Eliminar clase activa de todos los items y puntos
-                    testimonialItems.forEach(tItem => tItem.classList.remove('active'));
-                    dotsContainer.querySelectorAll('.slider-dot').forEach(d => d.classList.remove('active'));
+                    // Eliminar clase activa de todos los puntos
+                    dotsContainer.querySelectorAll('.slider-dot').forEach(d => {
+                        d.style.background = 'rgba(100, 255, 218, 0.3)';
+                        d.style.transform = 'scale(1)';
+                    });
                     
                     // Añadir clase activa al seleccionado
-                    testimonialItems[index].classList.add('active');
-                    dot.classList.add('active');
+                    dot.style.background = 'rgba(100, 255, 218, 0.9)';
+                    dot.style.transform = 'scale(1.2)';
                     
-                    // Mostrar el seleccionado
+                    // Mostrar el testimonio seleccionado
                     testimonialItems.forEach((item, i) => {
                         if (i === index) {
                             item.style.display = 'block';
-                            item.style.opacity = '1';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                            }, 50);
                         } else {
-                            item.style.display = 'none';
                             item.style.opacity = '0';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
                         }
                     });
                 });
@@ -494,11 +426,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Mostrar solo el primer item por defecto
             testimonialItems.forEach((item, index) => {
                 if (index === 0) {
-                    item.classList.add('active');
                     item.style.display = 'block';
+                    item.style.opacity = '1';
                 } else {
                     item.style.display = 'none';
-                    item.classList.remove('active');
+                    item.style.opacity = '0';
                 }
             });
             
@@ -507,30 +439,40 @@ document.addEventListener('DOMContentLoaded', function() {
             let slideshowTimeout;
             
             function switchTestimonial() {
-                testimonialItems.forEach(item => {
-                    item.style.display = 'none';
-                    item.classList.remove('active');
-                });
-                
-                dotsContainer.querySelectorAll('.slider-dot').forEach(dot => {
-                    dot.classList.remove('active');
-                });
-                
+                // Incrementar índice
                 currentIndex = (currentIndex + 1) % testimonialItems.length;
                 
-                testimonialItems[currentIndex].style.display = 'block';
-                testimonialItems[currentIndex].classList.add('active');
-                
-                // Animar con opacity
-                requestAnimationFrame(() => {
-                    testimonialItems[currentIndex].style.opacity = '1';
+                // Actualizar puntos
+                dotsContainer.querySelectorAll('.slider-dot').forEach((dot, i) => {
+                    if (i === currentIndex) {
+                        dot.style.background = 'rgba(100, 255, 218, 0.9)';
+                        dot.style.transform = 'scale(1.2)';
+                    } else {
+                        dot.style.background = 'rgba(100, 255, 218, 0.3)';
+                        dot.style.transform = 'scale(1)';
+                    }
                 });
                 
-                dotsContainer.querySelectorAll('.slider-dot')[currentIndex].classList.add('active');
+                // Ocultar el testimonio actual
+                testimonialItems.forEach(item => {
+                    item.style.opacity = '0';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                });
                 
-                // Usar menos frecuente cambio en móviles para ahorrar batería
-                const interval = isMobile ? 8000 : 6000;
-                slideshowTimeout = setTimeout(switchTestimonial, interval);
+                // Mostrar el nuevo testimonio
+                setTimeout(() => {
+                    testimonialItems[currentIndex].style.display = 'block';
+                    
+                    // Forzar reflow
+                    testimonialItems[currentIndex].offsetHeight;
+                    
+                    testimonialItems[currentIndex].style.opacity = '1';
+                }, 350);
+                
+                // Programar siguiente cambio (más lento)
+                slideshowTimeout = setTimeout(switchTestimonial, isMobile ? 8000 : 6000);
             }
             
             // Iniciar slideshow con retraso

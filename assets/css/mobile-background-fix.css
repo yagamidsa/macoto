@@ -1,0 +1,66 @@
+/* Correcciones para fondos en dispositivos móviles */
+
+/* Corregir distorsión de fondo en la sección hero para dispositivos móviles */
+@media screen and (max-width: 768px) {
+    /* Fondo fijo en lugar de parallax para móviles */
+    .hero-parallax .hero-layer-1,
+    .hero-parallax .hero-layer-2,
+    .hero-parallax .hero-layer-3,
+    .hero-parallax .hero-layer-4 {
+        position: absolute;
+        transform: none !important; /* Eliminar transformaciones que causan distorsión */
+        animation: none !important; /* Desactivar animaciones que pueden causar problemas */
+    }
+    
+    /* Ajustar el fondo del hero para que se vea mejor en móviles */
+    .hero-layer-1 {
+        background-position: center center !important;
+        background-size: cover !important;
+        opacity: 0.1 !important; /* Reducir opacidad para mejor legibilidad */
+    }
+    
+    /* Corregir el fondo del footer en móviles */
+    footer {
+        background: var(--dark-blue) !important; /* Simplificar el fondo en móviles */
+    }
+    
+    footer::before {
+        display: none; /* Eliminar efectos que puedan causar distorsión */
+    }
+    
+    /* Simplificar todos los fondos con gradientes para móviles */
+    .services, 
+    .about, 
+    .testimonials {
+        background: var(--dark-blue) !important;
+    }
+    
+    /* Eliminar elementos de fondo que causan distorsión en móviles */
+    .services::before,
+    .about-bg-elements,
+    .testimonials::before,
+    .contact-grid {
+        display: none !important;
+    }
+    
+    /* Ajustar padding de secciones para mejor visualización en móviles */
+    section {
+        padding: 80px 0 !important;
+    }
+}
+
+/* Reducir la complejidad visual para mejorar el rendimiento */
+@media screen and (max-width: 576px) {
+    .hero-content {
+        padding: 0 !important;
+    }
+    
+    /* Simplificar animaciones y efectos para dispositivos más pequeños */
+    .glass-card, .service-card, .testimonial-item, .contact-form {
+        backdrop-filter: none !important; /* El backdrop-filter causa problemas en algunos dispositivos */
+        transform: none !important;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) !important;
+    }
+}
+
+
