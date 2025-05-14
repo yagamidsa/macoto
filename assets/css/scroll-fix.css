@@ -1,0 +1,107 @@
+/* Scroll Fix para MACOTO */
+
+/* Desactivar scroll-behavior: smooth en HTML global para evitar trabados */
+html {
+    scroll-behavior: auto !important;
+}
+
+/* Hacer que el desplazamiento sea más suave a través de otras propiedades */
+body {
+    scroll-padding-top: 80px;
+    /* Para compensar el encabezado fijo */
+}
+
+/* Optimizar las transiciones para que sean más rápidas */
+.btn,
+.service-card,
+.testimonial-item,
+.contact-form,
+.hero-tag,
+.hero h1,
+.hero p,
+nav ul li a,
+.logo,
+.social-icon,
+.whatsapp-float {
+    transition-duration: 0.2s !important;
+}
+
+/* Reducir la duración de las animaciones */
+@keyframes fadeInBlur {
+    from {
+        opacity: 0;
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Asegurar que no haya propiedades que causen redibujados completos */
+.header-container,
+.container,
+section,
+footer {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Reducir animaciones que puedan causar trabado */
+@media screen and (max-width: 768px) {
+
+    /* Deshabilitar todas las animaciones del encabezado */
+    .hero-tag,
+    .hero h1,
+    .hero p,
+    .hero-buttons {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* Simplificar efectos de parallax */
+    .parallax-section,
+    .hero-parallax,
+    .about-bg-elements {
+        background-attachment: scroll !important;
+    }
+
+    /* Reducir efectos visuales */
+    .scanline,
+    .noise {
+        opacity: 0.5 !important;
+    }
+}
+
+/* Aumentar performance en transiciones entre secciones */
+section {
+    transform: translateZ(0);
+    will-change: auto;
+    /* Usar will-change: auto para que el navegador decida */
+}
+
+/* Eliminar !important donde no sea absolutamente necesario */
+.floating-element,
+.about-bg-circle,
+.hero-layer-2,
+.hero-layer-3,
+.hero-layer-4 {
+    animation-duration: 20s;
+}
