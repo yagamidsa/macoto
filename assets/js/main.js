@@ -9,6 +9,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('nav ul li a');
     const body = document.querySelector('body');
     
+    // ÚNICA ADICIÓN: Eliminar las ruedas de los iconos de servicio
+    const styleElement = document.createElement('style');
+    styleElement.id = 'service-icon-fix';
+    styleElement.textContent = `
+        /* Solo elimina los pseudo-elementos ::after de los iconos de servicio */
+        .service-card .service-icon::after {
+            display: none !important;
+            content: none !important;
+        }
+    `;
+    document.head.appendChild(styleElement);
+    
     // Inicializar efectos
     initParallaxEffect();
     initServiceParticles();
