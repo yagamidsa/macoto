@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="assets/css/hero-mobile-fix.css">
     <!-- CSS para corregir scroll -->
     <link rel="stylesheet" href="assets/css/scroll-fix.css">
+    <!-- CSS para corregir fondos en dispositivos móviles -->
+    <link rel="stylesheet" href="assets/css/mobile-background-fix.css">
     <!-- CSS para correcciones -->
     <style>
         /* Correcciones para evitar desbordamientos */
@@ -123,6 +125,11 @@
             display: none !important;
             content: none !important;
         }
+        
+        /* CORRECCIÓN ADICIONAL: Fondo directo para secciones principales */
+        .hero, .services, .about, .testimonials, .contact, footer {
+            background-color: var(--dark-blue) !important;
+        }
     </style>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -139,8 +146,9 @@
         </svg>
     </a>
     
-    <div class="scanline"></div>
-    <div class="noise"></div>
+    <!-- OCULTAR elementos de ruido/scanline -->
+    <!-- <div class="scanline"></div> -->
+    <!-- <div class="noise"></div> -->
 
     <!-- Header -->
     <header>
@@ -161,6 +169,7 @@
 
     <!-- Hero Section con Parallax -->
     <section class="hero parallax-section" id="home" data-scroll-speed="0.2">
+        <!-- Capas de parallax - Ocultas por CSS -->
         <div class="hero-parallax">
             <div class="hero-layer-1"></div>
             <div class="hero-layer-2"></div>
@@ -439,9 +448,11 @@
         </div>
     </footer>
 
-    <!-- JavaScript optimizado -->
+    <!-- JavaScript principal optimizado -->
     <script src="assets/js/main.js" defer></script>
-    <!-- Fix para scroll -->
-    <script src="assets/js/scroll-fix.js" defer></script>
+    <!-- Navegación suave mejorada -->
+    <script src="assets/js/smooth-navigation.js" defer></script>
+    <!-- Desactivar script de scroll-fix (reemplazado por smooth-navigation.js) -->
+    <!-- <script src="assets/js/scroll-fix.js" defer></script> -->
 </body>
 </html>
