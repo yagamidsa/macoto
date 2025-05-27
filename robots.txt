@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://macoto.com.co/sitemap.xml
+
+# Bloquear archivos sensibles
+Disallow: /assets/js/cache-cleaner.js
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /config/
+
+# Permitir crawling de recursos importantes
+Allow: /assets/css/
+Allow: /assets/images/
+
+# Crawl delay para evitar sobrecarga
+Crawl-delay: 1
