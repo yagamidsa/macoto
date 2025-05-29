@@ -1245,84 +1245,15 @@
     </script>
 
     <!-- Script para eventos automáticos -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Tracking automático de WhatsApp
-            const whatsappButton = document.querySelector('.nav-whatsapp');
-            if (whatsappButton) {
-                whatsappButton.addEventListener('click', trackWhatsAppClick);
-            }
 
-            // FORMULARIO CON EMAILJS
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    const formContainer = contactForm.parentElement;
-                    formContainer.style.opacity = '0.5';
-                    formContainer.style.transform = 'scale(0.95)';
-
-                    emailjs.sendForm('macoto', 'macoto', this)
-                        .then(function () {
-                            formContainer.innerHTML = `
-                                <div class="success-message">
-                                    <div class="service-icon">✅</div>
-                                    <h3>¡Mensaje Enviado!</h3>
-                                    <p>Gracias por contactarnos. Responderemos pronto.</p>
-                                    <button onclick="location.reload()" class="btn btn-primary" style="margin-top: 20px;">Enviar Otro Mensaje</button>
-                                </div>
-                            `;
-                            formContainer.style.opacity = '1';
-                            formContainer.style.transform = 'scale(1)';
-                        }, function (error) {
-                            alert('Error al enviar: ' + JSON.stringify(error));
-                            formContainer.style.opacity = '1';
-                            formContainer.style.transform = 'scale(1)';
-                        });
-                });
-            }
-        });
     </script>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        emailjs.init('xsVNhAMEbm3nWvUb-');
-    </script>
 </head>
 
 <body>
-    <!-- BOTÓN DE WHATSAPP ORIGINAL - COMENTADO PARA REFERENCIA -->
-    <!-- 
-    <a href="https://wa.me/573043404080?text=Hola%20MACOTO,%20me%20gustaría%20recibir%20más%20información%20sobre%20sus%20servicios."
-        class="whatsapp-fixed" id="whatsapp-main-button" target="_blank" rel="noopener noreferrer"
-        title="Contáctanos por WhatsApp">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 35px; height: 35px; fill: white;">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.298-.018-.458.13-.606.134-.133.298-.345.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="white" />
-        </svg>
-    </a>
-    -->
 
     <!-- Script para limpiar caché y cookies -->
     <script src="assets/js/cache-cleaner.js"></script>
-
-    <!-- HEADER ANTERIOR - COMENTADO PARA REFERENCIA -->
-    <!--
-    <header>
-        <div class="container header-container">
-            <a href="#" class="logo">MACOTO<span>.com.co</span></a>
-            <button class="mobile-toggle">☰</button>
-            <nav>
-                <ul>
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#services">Servicios</a></li>
-                    <li><a href="#about">Nosotros</a></li>
-                    <li><a href="#testimonials">Testimonios</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    -->
 
     <!-- NUEVO HEADER PROFESIONAL -->
     <header class="header-professional" id="headerProfessional">
@@ -1609,15 +1540,15 @@
             <div class="contact-form card-3d">
                 <form id="contact-form">
                     <div class="form-group">
-                        <input type="text" name="name" id="name" class="form-input" placeholder="" required>
+                        <input type="text" name="from_name" id="name" class="form-input" placeholder="" required>
                         <label for="name">Nombre completo</label>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" id="email" class="form-input" placeholder="" required>
-                        <label for="from_email">Correo electrónico</label>
+                        <input type="email" name="from_email" id="email" class="form-input" placeholder="" required>
+                        <label for="email">Correo electrónico</label>
                     </div>
                     <div class="form-group">
-                        <input type="tel" name="phone" id="phone" class="form-input" placeholder="">
+                        <input type="tel" name="from_phone" id="phone" class="form-input" placeholder="">
                         <label for="phone">Teléfono (opcional)</label>
                     </div>
                     <div class="form-group">
@@ -2195,105 +2126,279 @@
             window.changeTestimonial = changeTestimonial;
         })();
     </script>
-
-    <!-- Script para funcionalidades del formulario y efectos principales -->
+    <!-- ÚNICO SCRIPT PARA EL FORMULARIO - AGREGAR AL FINAL DEL BODY -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('🔧 Iniciando funcionalidades principales...');
+        (function () {
+            'use strict';
 
-            // Formulario de contacto
+            console.log('🔧 Iniciando formulario MACOTO con mensajes personalizados');
+
+            // Inicializar EmailJS
+            emailjs.init('xsVNhAMEbm3nWvUb-');
+
+            // Obtener formulario
             const contactForm = document.getElementById('contact-form');
             if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
+                // Remover cualquier listener previo
+                const newForm = contactForm.cloneNode(true);
+                contactForm.parentNode.replaceChild(newForm, contactForm);
+
+                // Agregar event listener único
+                newForm.addEventListener('submit', function (e) {
                     e.preventDefault();
 
+                    console.log('📧 Enviando formulario MACOTO...');
+
+                    const submitBtn = document.getElementById('submit-btn');
+                    const formContainer = this.parentElement;
+
                     // Validación básica
-                    let isValid = true;
-                    const nameInput = document.getElementById('name');
-                    const emailInput = document.getElementById('email');
-                    const messageInput = document.getElementById('message');
+                    const nameField = document.getElementById('name');
+                    const emailField = document.getElementById('email');
+                    const messageField = document.getElementById('message');
 
-                    // Reiniciar estados de error
-                    [nameInput, emailInput, messageInput].forEach(input => {
-                        if (input) {
-                            input.style.borderColor = '';
-                            const label = input.nextElementSibling;
-                            if (label) label.classList.remove('active');
-                        }
-                    });
-
-                    // Validar nombre
-                    if (nameInput && !nameInput.value.trim()) {
-                        nameInput.style.borderColor = 'rgba(255, 0, 0, 0.5)';
-                        nameInput.style.boxShadow = '0 0 10px rgba(255, 0, 0, 0.2)';
-                        isValid = false;
+                    if (!nameField.value.trim() || !emailField.value.trim() || !messageField.value.trim()) {
+                        showValidationError();
+                        return;
                     }
 
-                    // Validar email
-                    if (emailInput) {
-                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                        if (!emailPattern.test(emailInput.value)) {
-                            emailInput.style.borderColor = 'rgba(255, 0, 0, 0.5)';
-                            emailInput.style.boxShadow = '0 0 10px rgba(255, 0, 0, 0.2)';
-                            isValid = false;
-                        }
-                    }
+                    // Mostrar estado de carga
+                    showLoadingState(submitBtn);
 
-                    // Validar mensaje
-                    if (messageInput && !messageInput.value.trim()) {
-                        messageInput.style.borderColor = 'rgba(255, 0, 0, 0.5)';
-                        messageInput.style.boxShadow = '0 0 10px rgba(255, 0, 0, 0.2)';
-                        isValid = false;
-                    }
-
-                    // Si es válido, enviar formulario con animación
-                    if (isValid) {
-                        const formContainer = contactForm.parentElement;
-                        formContainer.style.opacity = '0.5';
-                        formContainer.style.transform = 'scale(0.95)';
-
-                        // Simular envío del formulario (aquí puedes integrar EmailJS o tu servicio preferido)
-                        setTimeout(() => {
-                            formContainer.innerHTML = `
-                                <div class="success-message">
-                                    <div class="service-icon">✓</div>
-                                    <h3>¡Mensaje Enviado!</h3>
-                                    <p>Gracias por contactarnos. Responderemos a tu mensaje tan pronto como sea posible.</p>
-                                </div>
-                            `;
-                            formContainer.style.opacity = '1';
-                            formContainer.style.transform = 'scale(1)';
-                        }, 1000);
-                    }
+                    // Enviar con EmailJS
+                    emailjs.sendForm('macoto', 'macoto', this)
+                        .then(function (response) {
+                            console.log('✅ Email enviado exitosamente:', response);
+                            showSuccessMessage(formContainer);
+                        }, function (error) {
+                            console.error('❌ Error al enviar:', error);
+                            showErrorMessage(formContainer, error);
+                        });
                 });
 
-                // Animación para etiquetas del formulario
-                const formInputs = document.querySelectorAll('.form-input');
-                if (formInputs.length > 0) {
-                    formInputs.forEach(input => {
-                        input.addEventListener('focus', function () {
-                            const label = this.nextElementSibling;
-                            if (label) label.classList.add('active');
-                        });
+                console.log('✅ Formulario MACOTO iniciado correctamente');
+            }
 
-                        input.addEventListener('blur', function () {
-                            const label = this.nextElementSibling;
-                            if (label && !this.value) {
-                                label.classList.remove('active');
-                            }
-                        });
-
-                        // Verificar si el input ya tiene valor al cargar
-                        if (input.value) {
-                            const label = input.nextElementSibling;
-                            if (label) label.classList.add('active');
-                        }
-                    });
+            // FUNCIÓN: Mostrar estado de carga
+            function showLoadingState(submitBtn) {
+                if (submitBtn) {
+                    submitBtn.innerHTML = `
+                        <span style="display: inline-flex; align-items: center; gap: 8px;">
+                            <span style="animation: spin 1s linear infinite;">⏳</span>
+                            Enviando mensaje...
+                        </span>
+                    `;
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = '0.7';
                 }
             }
 
-            console.log('✅ Funcionalidades principales iniciadas');
-        });
+            // FUNCIÓN: Mensaje de éxito personalizado
+            function showSuccessMessage(container) {
+                container.innerHTML = `
+                    <div style="
+                        background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+                        padding: 40px 30px;
+                        border-radius: 12px;
+                        text-align: center;
+                        border: 2px solid #28a745;
+                        box-shadow: 0 8px 25px rgba(40, 167, 69, 0.2);
+                        animation: fadeInSuccess 0.8s ease-out;
+                    ">
+                        <div style="font-size: 48px; margin-bottom: 20px; animation: bounce 2s infinite;">🎉</div>
+                        
+                        <h2 style="color: #155724; margin: 0 0 15px 0; font-size: 28px; font-weight: bold;">
+                            ¡Mensaje Enviado Exitosamente!
+                        </h2>
+                        
+                        <p style="color: #155724; font-size: 18px; margin: 0 0 20px 0; line-height: 1.6;">
+                            <strong>Gracias por contactar a MACOTO.</strong><br>
+                            Hemos recibido tu consulta y nuestro equipo de especialistas en seguros te responderá en un plazo máximo de <strong>2 horas</strong> durante horario laboral.
+                        </p>
+                        
+                        <p style="color: #155724; font-size: 16px; margin: 0 0 25px 0;">
+                            Mientras tanto, puedes seguirnos en nuestras redes sociales para conocer más sobre nuestros servicios de intermediación de seguros.
+                        </p>
+                        
+                        <div style="margin: 25px 0;">
+                            <a href="tel:+573043404080" style="
+                                display: inline-block;
+                                padding: 12px 24px;
+                                background: linear-gradient(135deg, #64ffda 0%, #38a89d 100%);
+                                color: #0a192f;
+                                text-decoration: none;
+                                border-radius: 6px;
+                                font-weight: 600;
+                                font-size: 16px;
+                                margin: 5px;
+                                transition: all 0.3s ease;
+                            " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                                📞 Llamar Ahora
+                            </a>
+                            
+                            <button onclick="location.reload()" style="
+                                display: inline-block;
+                                padding: 12px 24px;
+                                background: #6c757d;
+                                color: white;
+                                border: none;
+                                border-radius: 6px;
+                                font-weight: 600;
+                                font-size: 16px;
+                                margin: 5px;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                                ✉️ Enviar Otra Consulta
+                            </button>
+                        </div>
+                        
+                        <p style="color: #155724; font-size: 14px; margin: 20px 0 0 0; opacity: 0.8;">
+                            📧 También puedes contactarnos directamente al: <strong>contacto@macoto.com.co</strong>
+                        </p>
+                    </div>
+                `;
+            }
+
+            // FUNCIÓN: Mensaje de error personalizado
+            function showErrorMessage(container, error) {
+                const errorDetails = error.text || error.message || 'Error de conexión';
+
+                container.innerHTML = `
+                    <div style="
+                        background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+                        padding: 40px 30px;
+                        border-radius: 12px;
+                        text-align: center;
+                        border: 2px solid #dc3545;
+                        box-shadow: 0 8px 25px rgba(220, 53, 69, 0.2);
+                        animation: fadeInError 0.8s ease-out;
+                    ">
+                        <div style="font-size: 48px; margin-bottom: 20px;">😔</div>
+                        
+                        <h2 style="color: #721c24; margin: 0 0 15px 0; font-size: 28px; font-weight: bold;">
+                            Oops... Algo salió mal
+                        </h2>
+                        
+                        <p style="color: #721c24; font-size: 18px; margin: 0 0 20px 0; line-height: 1.6;">
+                            <strong>No pudimos enviar tu mensaje en este momento.</strong><br>
+                            Esto puede deberse a un problema temporal de conectividad. No te preocupes, tenemos varias alternativas para ayudarte.
+                        </p>
+                        
+                        <p style="color: #721c24; font-size: 16px; margin: 0 0 25px 0;">
+                            <strong>Puedes:</strong> Intentar nuevamente, llamarnos directamente o escribirnos por WhatsApp.
+                        </p>
+                        
+                        <div style="margin: 25px 0;">
+                            <button onclick="location.reload()" style="
+                                display: inline-block;
+                                padding: 12px 24px;
+                                background: linear-gradient(135deg, #64ffda 0%, #38a89d 100%);
+                                color: #0a192f;
+                                border: none;
+                                border-radius: 6px;
+                                font-weight: 600;
+                                font-size: 16px;
+                                margin: 5px;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                                🔄 Intentar Nuevamente
+                            </button>
+                            
+                            <a href="https://wa.me/573043404080?text=Hola%20MACOTO,%20tuve%20problemas%20con%20el%20formulario%20web" target="_blank" style="
+                                display: inline-block;
+                                padding: 12px 24px;
+                                background: #25D366;
+                                color: white;
+                                text-decoration: none;
+                                border-radius: 6px;
+                                font-weight: 600;
+                                font-size: 16px;
+                                margin: 5px;
+                                transition: all 0.3s ease;
+                            " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                                📱 WhatsApp
+                            </a>
+                        </div>
+                        
+                        <p style="color: #721c24; font-size: 14px; margin: 20px 0 0 0; opacity: 0.8;">
+                            📞 Línea directa: <strong>+57 304 340-4080</strong> | WhatsApp: <strong>+57 300 266-2887</strong>
+                        </p>
+                        
+                        <details style="margin-top: 20px; text-align: left;">
+                            <summary style="cursor: pointer; color: #721c24; font-size: 14px;">🔧 Detalles técnicos (opcional)</summary>
+                            <p style="font-size: 12px; color: #721c24; margin: 10px 0 0 0; font-family: monospace;">
+                                Error: ${errorDetails}
+                            </p>
+                        </details>
+                    </div>
+                `;
+            }
+
+            // FUNCIÓN: Mensaje de validación
+            function showValidationError() {
+                // Crear mensaje temporal
+                const tempMessage = document.createElement('div');
+                tempMessage.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+                    color: #856404;
+                    padding: 15px 20px;
+                    border-radius: 8px;
+                    border: 2px solid #ffc107;
+                    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+                    z-index: 10000;
+                    font-weight: 600;
+                    animation: slideInFromRight 0.5s ease-out;
+                `;
+                tempMessage.innerHTML = `
+                    ⚠️ Por favor, completa todos los campos obligatorios antes de enviar.
+                `;
+
+                document.body.appendChild(tempMessage);
+
+                // Remover después de 4 segundos
+                setTimeout(() => {
+                    tempMessage.style.animation = 'slideOutToRight 0.5s ease-out';
+                    setTimeout(() => tempMessage.remove(), 500);
+                }, 4000);
+            }
+
+            // Agregar estilos de animación
+            const styles = document.createElement('style');
+            styles.textContent = `
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+                @keyframes bounce {
+                    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+                    40% { transform: translateY(-10px); }
+                    60% { transform: translateY(-5px); }
+                }
+                @keyframes fadeInSuccess {
+                    0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+                    100% { opacity: 1; transform: scale(1) translateY(0); }
+                }
+                @keyframes fadeInError {
+                    0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+                    100% { opacity: 1; transform: scale(1) translateY(0); }
+                }
+                @keyframes slideInFromRight {
+                    0% { opacity: 0; transform: translateX(100%); }
+                    100% { opacity: 1; transform: translateX(0); }
+                }
+                @keyframes slideOutToRight {
+                    0% { opacity: 1; transform: translateX(0); }
+                    100% { opacity: 0; transform: translateX(100%); }
+                }
+            `;
+            document.head.appendChild(styles);
+
+        })();
     </script>
 </body>
 
