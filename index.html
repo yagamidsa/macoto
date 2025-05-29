@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <!-- ESTILOS CRÍTICOS - DEBEN IR PRIMERO -->
     <style id="critical-fixes">
-        /* FORZAR VISIBILIDAD DEL WHATSAPP */
+        /* FORZAR VISIBILIDAD DEL WHATSAPP COMENTADO - MANTENIDO PARA REFERENCIA */
+        /*
         .whatsapp-fixed {
             position: fixed !important;
             bottom: 30px !important;
@@ -37,35 +38,11 @@
             user-select: none !important;
             -webkit-tap-highlight-color: transparent !important;
         }
-
-        .whatsapp-fixed:hover {
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4) !important;
-            transform: scale(1.05) !important;
-        }
-
-        .whatsapp-fixed svg {
-            width: 35px !important;
-            height: 35px !important;
-            fill: white !important;
-        }
+        */
 
         body>*:not(.whatsapp-fixed) {
             position: relative;
             z-index: auto !important;
-        }
-
-        @media screen and (max-width: 768px) {
-            .whatsapp-fixed {
-                bottom: 20px !important;
-                right: 20px !important;
-                width: 55px !important;
-                height: 55px !important;
-            }
-
-            .whatsapp-fixed svg {
-                width: 30px !important;
-                height: 30px !important;
-            }
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,7 +72,6 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="dns-prefetch" href="//wa.me">
 
-
     <!-- OPEN GRAPH / FACEBOOK -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://macoto.com.co/">
@@ -112,7 +88,7 @@
     <meta property="twitter:url" content="https://macoto.com.co/">
     <meta property="twitter:title" content="MACOTO - Intermediarios de Seguros en Bogotá">
     <meta property="twitter:description"
-        content="Especialistas en intermediación de seguros con más de 15 años de experiencia. Seguros empresariales y personales en Colombia.">
+        content="Especialistas en intermediación de seguros con más de 5 años de experiencia. Seguros empresariales y personales en Colombia.">
     <meta property="twitter:image" content="https://macoto.com.co/assets/images/macoto-twitter-image.jpg">
 
     <!-- CANONICAL URL -->
@@ -160,7 +136,7 @@
             "Intermediación de Seguros",
             "Seguros Empresariales",
             "Seguros Personales",
-            "Asesoría en Seguros"
+            "Asesoría Especializada"
         ],
         "aggregateRating": {
             "@type": "AggregateRating",
@@ -181,6 +157,660 @@
     <link rel="stylesheet" href="assets/css/scroll-fix.css">
     <!-- CSS para corregir fondos en dispositivos móviles -->
     <link rel="stylesheet" href="assets/css/mobile-background-fix.css">
+
+    <!-- NUEVO CSS PARA EL NAV PROFESIONAL -->
+    <style>
+        /* ==============================================
+           NUEVO SISTEMA DE NAVEGACIÓN PROFESIONAL
+           ============================================== */
+        
+        /* Ocultar el nav anterior */
+        /* COMENTAR NAV ANTERIOR - MANTENIDO PARA REFERENCIA */
+        /*
+        header {
+            display: none !important;
+        }
+        */
+
+        /* Header Professional Nuevo */
+        .header-professional {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 0;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 9999;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .header-professional.scrolled {
+            padding: 12px 0;
+            background: rgba(10, 25, 47, 0.98);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.4);
+            border-bottom-color: rgba(100, 255, 218, 0.2);
+        }
+
+        .header-professional .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Logo Profesional - Más sutil */
+        .logo-professional {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--silver-bright);
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+            z-index: 99999;
+        }
+
+        .logo-professional span {
+            background: var(--accent-gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: gradientFlow 4s ease infinite;
+        }
+
+        .logo-professional::after {
+            content: "MACOTO";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--cyan);
+            opacity: 0.2;
+            filter: blur(2px);
+            animation: glitch 8s infinite alternate;
+            z-index: -1;
+        }
+
+        /* Navegación Central Profesional - Más compacta */
+        .nav-professional {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(10, 25, 47, 0.3);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            border-radius: 30px;
+            padding: 8px 15px;
+            transition: all 0.4s ease;
+        }
+
+        .nav-professional:hover {
+            background: rgba(10, 25, 47, 0.4);
+            border-color: rgba(100, 255, 218, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-professional ul {
+            display: flex;
+            list-style: none;
+            gap: 2px;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-professional ul li a {
+            color: var(--silver);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .nav-professional ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--accent-gradient);
+            background-size: 200% auto;
+            border-radius: 20px;
+            transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: -1;
+        }
+
+        .nav-professional ul li a:hover,
+        .nav-professional ul li a.active {
+            color: var(--dark-blue);
+            transform: translateY(-1px);
+        }
+
+        .nav-professional ul li a:hover::before,
+        .nav-professional ul li a.active::before {
+            width: 100%;
+            animation: gradientFlow 3s linear infinite;
+        }
+
+        /* Botón WhatsApp en Nav - Estilo Neon como Footer */
+        .nav-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: rgba(10, 25, 47, 0.7);
+            border: 2px solid var(--cyan);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            margin-left: 8px;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+
+        .nav-whatsapp::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+            animation: gradientFlow 3s linear infinite;
+        }
+
+        .nav-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.6);
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        .nav-whatsapp:hover::before {
+            opacity: 1;
+        }
+
+        .nav-whatsapp svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--cyan);
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 3px rgba(100, 255, 218, 0.5));
+        }
+
+        .nav-whatsapp:hover svg {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 6px rgba(100, 255, 218, 0.8));
+        }
+
+        /* Toggle Móvil Profesional - SOLO EN MÓVIL */
+        .mobile-toggle-professional {
+            display: none !important; /* OCULTO POR DEFECTO */
+            background: rgba(10, 25, 47, 0.7);
+            border: 2px solid rgba(100, 255, 218, 0.3);
+            border-radius: 8px;
+            color: var(--cyan);
+            font-size: 18px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 99999;
+        }
+
+        .mobile-toggle-professional:hover {
+            background: rgba(100, 255, 218, 0.1);
+            border-color: var(--cyan);
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* RESPONSIVE DESIGN MEJORADO */
+        
+        /* Desktop Large (1200px+) */
+        @media screen and (min-width: 1200px) {
+            .header-professional {
+                padding: 20px 0;
+            }
+            
+            .header-professional.scrolled {
+                padding: 14px 0;
+            }
+            
+            .logo-professional {
+                font-size: 30px;
+            }
+            
+            .nav-professional {
+                gap: 12px;
+                padding: 10px 20px;
+            }
+            
+            .nav-professional ul {
+                gap: 6px;
+            }
+            
+            .nav-professional ul li a {
+                font-size: 15px;
+                padding: 10px 16px;
+            }
+            
+            .nav-whatsapp {
+                width: 42px;
+                height: 42px;
+                margin-left: 12px;
+            }
+            
+            .nav-whatsapp svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+
+        /* Laptop (992px - 1199px) */
+        @media screen and (min-width: 992px) and (max-width: 1199px) {
+            .logo-professional {
+                font-size: 26px;
+            }
+            
+            .nav-professional {
+                gap: 10px;
+                padding: 8px 18px;
+            }
+            
+            .nav-professional ul {
+                gap: 4px;
+            }
+            
+            .nav-professional ul li a {
+                font-size: 14px;
+                padding: 8px 14px;
+            }
+            
+            .nav-whatsapp {
+                width: 36px;
+                height: 36px;
+                margin-left: 10px;
+            }
+            
+            .nav-whatsapp svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        /* Tablet (768px - 991px) */
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+            .logo-professional {
+                font-size: 24px;
+            }
+            
+            .nav-professional {
+                gap: 6px;
+                padding: 6px 12px;
+                position: static;
+                transform: none;
+                margin: 0 15px;
+            }
+            
+            .nav-professional ul {
+                gap: 2px;
+            }
+            
+            .nav-professional ul li a {
+                font-size: 13px;
+                padding: 6px 10px;
+            }
+            
+            .nav-whatsapp {
+                width: 32px;
+                height: 32px;
+                margin-left: 6px;
+            }
+            
+            .nav-whatsapp svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        /* Mobile (max-width: 767px) */
+        @media screen and (max-width: 767px) {
+            .header-professional {
+                padding: 15px 0;
+            }
+            
+            .header-professional.scrolled {
+                padding: 10px 0;
+            }
+            
+            .logo-professional {
+                font-size: 24px;
+            }
+            
+            /* MOSTRAR TOGGLE SOLO EN MÓVIL */
+            .mobile-toggle-professional {
+                display: block !important;
+            }
+
+            /* OCULTAR NAV DESKTOP EN MÓVIL */
+            .nav-professional {
+                display: none !important;
+            }
+            
+            /* MENÚ MÓVIL OVERLAY SEPARADO */
+            .nav-professional.mobile-menu-overlay {
+                display: flex !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                background: rgba(10, 25, 47, 0.98) !important;
+                backdrop-filter: blur(20px) !important;
+                border: none !important;
+                border-radius: 0 !important;
+                padding: 40px 30px !important;
+                gap: 20px !important;
+                z-index: 2147483647 !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transform: scale(0.9) !important;
+                transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+                overflow: hidden !important;
+                pointer-events: none !important;
+            }
+            
+            .nav-professional.mobile-menu-overlay.mobile-active {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: scale(1) !important;
+                pointer-events: auto !important;
+            }
+            
+            .nav-professional.mobile-menu-overlay ul {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            
+            .nav-professional.mobile-menu-overlay ul li {
+                width: 100%;
+            }
+            
+            .nav-professional.mobile-menu-overlay ul li a {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 18px 24px;
+                font-size: 18px;
+                font-weight: 600;
+                border-radius: 15px;
+                margin-bottom: 5px;
+                background: rgba(10, 25, 47, 0.5);
+                border: 1px solid rgba(100, 255, 218, 0.2);
+                transition: all 0.3s ease;
+            }
+            
+            .nav-professional.mobile-menu-overlay ul li a:hover,
+            .nav-professional.mobile-menu-overlay ul li a.active {
+                background: var(--accent-gradient);
+                color: var(--dark-blue);
+                border-color: transparent;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(100, 255, 218, 0.3);
+            }
+            
+            /* WhatsApp en menú móvil - RESPONSIVO CORREGIDO */
+            .nav-professional.mobile-menu-overlay .nav-whatsapp {
+                margin: 20px auto 0;
+                width: 70px !important;
+                height: 70px !important;
+                min-width: 70px !important;
+                min-height: 70px !important;
+                max-width: 70px !important;
+                max-height: 70px !important;
+                border-width: 3px;
+                box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+                border-radius: 50% !important;
+                aspect-ratio: 1 / 1 !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .nav-professional.mobile-menu-overlay .nav-whatsapp svg {
+                width: 32px !important;
+                height: 32px !important;
+            }
+            
+            .nav-professional.mobile-menu-overlay .nav-whatsapp:hover {
+                transform: scale(1.1);
+                box-shadow: 0 0 30px rgba(100, 255, 218, 0.8);
+            }
+        }
+
+        /* Mobile Small (max-width: 480px) */
+        @media screen and (max-width: 480px) {
+            .header-professional .container {
+                padding: 0 15px;
+            }
+            
+            .logo-professional {
+                font-size: 22px;
+            }
+            
+            .nav-professional.mobile-menu-overlay {
+                padding: 30px 20px;
+            }
+            
+            .nav-professional.mobile-menu-overlay ul {
+                max-width: 280px;
+                gap: 12px;
+            }
+            
+            .nav-professional.mobile-menu-overlay ul li a {
+                padding: 16px 20px;
+                font-size: 17px;
+            }
+            
+            .nav-professional.mobile-menu-overlay .nav-whatsapp {
+                width: 65px !important;
+                height: 65px !important;
+                min-width: 65px !important;
+                min-height: 65px !important;
+                max-width: 65px !important;
+                max-height: 65px !important;
+            }
+            
+            .nav-professional.mobile-menu-overlay .nav-whatsapp svg {
+                width: 28px !important;
+                height: 28px !important;
+            }
+        }
+
+        /* Overlay para móvil - MEJORADO */
+        .nav-overlay-professional {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 999998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: none; /* Oculto por defecto, solo se usa en desktop si es necesario */
+        }
+        
+        .nav-overlay-professional.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* En móvil no necesitamos overlay separado porque el menú cubre toda la pantalla */
+        @media screen and (max-width: 767px) {
+            .nav-overlay-professional {
+                display: none !important;
+            }
+        }
+
+        /* Animaciones adicionales */
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-professional.active {
+            animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* CORRECCIÓN CRÍTICA: Forzar z-index bajo para todo el contenido */
+        
+        /* Elementos principales de la página */
+        .hero,
+        .hero *,
+        .hero-parallax,
+        .hero-parallax *,
+        .hero-layer-1,
+        .hero-layer-2,
+        .hero-layer-3,
+        .hero-layer-4,
+        .hero-content,
+        .hero-content *,
+        .hero-image,
+        .hero-image *,
+        .services,
+        .services *,
+        .about,
+        .about *,
+        .testimonials,
+        .testimonials *,
+        .contact,
+        .contact *,
+        footer,
+        footer *,
+        .container,
+        .container *,
+        section,
+        section * {
+            z-index: 1 !important;
+        }
+
+        /* Solo el header y nav pueden tener z-index alto */
+        .header-professional,
+        .header-professional *,
+        .nav-professional,
+        .nav-professional *,
+        .mobile-toggle-professional,
+        .logo-professional {
+            z-index: inherit !important;
+        }
+
+        /* Asegurar que ningún elemento tape el menú móvil */
+        @media screen and (max-width: 767px) {
+            body * {
+                z-index: 1 !important;
+            }
+            
+            .header-professional,
+            .header-professional *,
+            .nav-professional,
+            .nav-professional *,
+            .mobile-toggle-professional,
+            .logo-professional {
+                z-index: 999999999 !important;
+            }
+        }
+        .hero {
+            padding-top: 90px;
+        }
+
+        @media screen and (max-width: 767px) {
+            .hero {
+                padding-top: 75px;
+            }
+        }
+
+        /* Variables CSS necesarias si no están definidas */
+        :root {
+            --dark-blue: #0a192f;
+            --mid-blue: #172a45;
+            --silver: #c0c5c1;
+            --silver-bright: #e6e8e6;
+            --cyan: #64ffda;
+            --dark-shadow: rgba(0, 0, 0, 0.7);
+            --accent-gradient: linear-gradient(120deg, #64ffda, #38a89d, #0a9396);
+            --glass-effect: rgba(10, 25, 47, 0.6);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animaciones necesarias */
+        @keyframes gradientFlow {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+                text-shadow: 0 0 0 rgba(100, 255, 218, 0.5);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+                text-shadow: 1px 0 0 rgba(255, 0, 0, 0.3), -1px 0 0 rgba(0, 255, 255, 0.3);
+            }
+            40% {
+                transform: translate(-2px, -2px);
+                text-shadow: 1px 0 0 rgba(255, 0, 0, 0.3), -1px 0 0 rgba(0, 255, 255, 0.3);
+            }
+            60% {
+                transform: translate(2px, 2px);
+                text-shadow: 1px 0 0 rgba(255, 0, 0, 0.3), -1px 0 0 rgba(0, 255, 255, 0.3);
+            }
+            80% {
+                transform: translate(2px, -2px);
+                text-shadow: 1px 0 0 rgba(255, 0, 0, 0.3), -1px 0 0 rgba(0, 255, 255, 0.3);
+            }
+            100% {
+                transform: translate(0);
+                text-shadow: 0 0 0 rgba(100, 255, 218, 0.5);
+            }
+        }
+    </style>
 
     <!-- CSS para correcciones -->
     <style>
@@ -299,99 +929,8 @@
         footer {
             background-color: var(--dark-blue) !important;
         }
-
-        /* Variables CSS necesarias */
-        :root {
-            --cyan: #64ffda;
-            --accent-gradient: linear-gradient(120deg, #64ffda, #38a89d, #0a9396);
-        }
-    </style>
-    <style>
-        /* FIX PARA EL MENÚ MÓVIL */
-        nav.active {
-            display: block !important;
-            right: 0 !important;
-        }
-
-        @media screen and (max-width: 768px) {
-            nav {
-                display: block !important;
-                /* Importante */
-            }
-        }
     </style>
 
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-XXXXXXXXXX', {
-            page_title: 'MACOTO - Intermediarios de Seguros'
-        });
-
-        // Eventos personalizados para MACOTO
-        function trackContactForm() {
-            gtag('event', 'form_submit', {
-                event_category: 'engagement',
-                event_label: 'contact_form'
-            });
-        }
-
-        function trackWhatsAppClick() {
-            gtag('event', 'click', {
-                event_category: 'engagement',
-                event_label: 'whatsapp_button'
-            });
-        }
-    </script>
-
-    <!-- Script para eventos automáticos -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Tracking automático de WhatsApp
-            const whatsappButton = document.querySelector('.whatsapp-fixed');
-            if (whatsappButton) {
-                whatsappButton.addEventListener('click', trackWhatsAppClick);
-            }
-
-            // FORMULARIO CON EMAILJS
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    const formContainer = contactForm.parentElement;
-                    formContainer.style.opacity = '0.5';
-                    formContainer.style.transform = 'scale(0.95)';
-
-                    emailjs.sendForm('macoto', 'macoto', this)
-                        .then(function () {
-                            formContainer.innerHTML = `
-                                <div class="success-message">
-                                    <div class="service-icon">✅</div>
-                                    <h3>¡Mensaje Enviado!</h3>
-                                    <p>Gracias por contactarnos. Responderemos pronto.</p>
-                                    <button onclick="location.reload()" class="btn btn-primary" style="margin-top: 20px;">Enviar Otro Mensaje</button>
-                                </div>
-                            `;
-                            formContainer.style.opacity = '1';
-                            formContainer.style.transform = 'scale(1)';
-                        }, function (error) {
-                            alert('Error al enviar: ' + JSON.stringify(error));
-                            formContainer.style.opacity = '1';
-                            formContainer.style.transform = 'scale(1)';
-                        });
-                });
-            }
-        });
-    </script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        emailjs.init('xsVNhAMEbm3nWvUb-');
-    </script>
     <!-- NUEVO SISTEMA DE TESTIMONIOS CON ANIMACIÓN ELEGANTE -->
     <style>
         /* Estilos para el nuevo sistema de testimonios */
@@ -562,7 +1101,6 @@
             background: #64ffda;
             border-radius: 2px;
             transition: width 8s linear;
-            /* Cambiado de 5s a 8s para sincronizar con el autoplay */
         }
 
         .dot.active::before {
@@ -582,7 +1120,6 @@
             display: flex;
             justify-content: space-between;
             padding: 0 60px;
-            /* Aumentado de 20px a 60px para acercar las flechas al centro */
             pointer-events: none;
             z-index: 5;
         }
@@ -618,221 +1155,15 @@
             fill: #64ffda;
         }
 
-        /* Efecto de partículas flotantes para ambiente */
-        .testimonial-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .particle-float {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: #64ffda;
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: floatUp 15s linear infinite;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(100%) translateX(0);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 0.3;
-            }
-
-            90% {
-                opacity: 0.3;
-            }
-
-            100% {
-                transform: translateY(-100%) translateX(50px);
-                opacity: 0;
-            }
-        }
-
-        /* Responsive Design Completo */
-
-        /* Desktop Extra Grande (1920px y más) */
-        @media screen and (min-width: 1920px) {
-            .testimonials-container {
-                max-width: 1200px;
-            }
-
-            .testimonials-slider {
-                min-height: 380px;
-                padding: 60px;
-            }
-
-            .testimonial-nav {
-                padding: 0 120px;
-            }
-
-            .nav-btn {
-                width: 60px;
-                height: 60px;
-            }
-
-            .testimonial-content {
-                font-size: 20px;
-                line-height: 1.9;
-            }
-
-            .testimonial-author img {
-                width: 80px;
-                height: 80px;
-            }
-        }
-
-        /* Desktop Grande (1440px a 1919px) */
-        @media screen and (min-width: 1440px) and (max-width: 1919px) {
-            .testimonials-slider {
-                min-height: 350px;
-                padding: 50px;
-            }
-
-            .testimonial-nav {
-                padding: 0 80px;
-            }
-
-            .nav-btn {
-                width: 55px;
-                height: 55px;
-            }
-        }
-
-        /* Desktop Estándar (1200px a 1439px) */
-        @media screen and (min-width: 1200px) and (max-width: 1439px) {
-            .testimonials-slider {
-                min-height: 340px;
-                padding: 45px;
-            }
-
-            .testimonial-nav {
-                padding: 0 60px;
-            }
-        }
-
-        /* Laptop (992px a 1199px) */
-        @media screen and (min-width: 992px) and (max-width: 1199px) {
-            .testimonials-slider {
-                min-height: 330px;
-                padding: 40px;
-            }
-
-            .testimonial-nav {
-                padding: 0 50px;
-            }
-
-            .testimonial-content {
-                font-size: 17px;
-            }
-        }
-
-        /* Tablet Landscape (768px a 991px) */
-        @media screen and (min-width: 768px) and (max-width: 991px) {
-            .testimonials-slider {
-                min-height: 350px;
-                padding: 35px;
-            }
-
-            .testimonial-nav {
-                padding: 0 40px;
-            }
-
-            .nav-btn {
-                width: 45px;
-                height: 45px;
-            }
-
-            .testimonial-quote-mark {
-                font-size: 140px;
-            }
-
-            .testimonial-content {
-                font-size: 16px;
-            }
-
-            .testimonial-author img {
-                width: 65px;
-                height: 65px;
-            }
-        }
-
-        /* Tablet Portrait (576px a 767px) */
-        @media screen and (min-width: 576px) and (max-width: 767px) {
-            .testimonials-slider {
-                min-height: 380px;
-                padding: 30px;
-            }
-
-            .testimonial-nav {
-                padding: 0 25px;
-            }
-
-            .nav-btn {
-                width: 42px;
-                height: 42px;
-                background: rgba(10, 25, 47, 0.7);
-            }
-
-            .nav-btn svg {
-                width: 18px;
-                height: 18px;
-            }
-
-            .testimonial-quote-mark {
-                font-size: 120px;
-                top: -5px;
-                left: -5px;
-            }
-
-            .testimonial-content {
-                font-size: 16px;
-                line-height: 1.7;
-            }
-
-            .testimonial-author img {
-                width: 60px;
-                height: 60px;
-            }
-
-            .testimonial-dots {
-                bottom: -35px;
-            }
-
-            .dot {
-                width: 35px;
-                height: 3px;
-            }
-        }
-
-        /* Mobile Large (414px a 575px) */
-        @media screen and (min-width: 414px) and (max-width: 575px) {
+        /* Responsive Design para testimonios */
+        @media screen and (max-width: 767px) {
             .testimonials-slider {
                 min-height: 420px;
                 padding: 25px 20px;
             }
 
             .testimonial-nav {
-                padding: 0 15px;
-            }
-
-            .nav-btn {
-                width: 38px;
-                height: 38px;
-                opacity: 0.8;
-            }
-
-            .nav-btn svg {
-                width: 16px;
-                height: 16px;
+                display: none;
             }
 
             .testimonial-quote-mark {
@@ -870,316 +1201,98 @@
                 width: 30px;
             }
         }
-
-        /* Mobile Medium (375px a 413px) */
-        @media screen and (min-width: 375px) and (max-width: 413px) {
-            .testimonials-slider {
-                min-height: 440px;
-                padding: 20px 15px;
-            }
-
-            .testimonial-nav {
-                display: none;
-                /* Ocultar en móviles pequeños */
-            }
-
-            .testimonial-quote-mark {
-                font-size: 90px;
-                opacity: 0.03;
-            }
-
-            .testimonial-content {
-                font-size: 14px;
-                line-height: 1.6;
-            }
-
-            .testimonial-author img {
-                width: 50px;
-                height: 50px;
-            }
-
-            .testimonial-author-info h4 {
-                font-size: 17px;
-            }
-
-            .testimonial-author-info p {
-                font-size: 12px;
-            }
-
-            .testimonial-dots {
-                bottom: -30px;
-                gap: 8px;
-            }
-
-            .dot {
-                width: 28px;
-                height: 3px;
-            }
-        }
-
-        /* Mobile Small (320px a 374px) */
-        @media screen and (max-width: 374px) {
-            .testimonials-slider {
-                min-height: 460px;
-                padding: 20px 15px;
-            }
-
-            .testimonial-nav {
-                display: none;
-            }
-
-            .testimonial-quote-mark {
-                font-size: 80px;
-                opacity: 0.03;
-            }
-
-            .testimonial-content {
-                font-size: 14px;
-                line-height: 1.5;
-                margin-bottom: 20px;
-            }
-
-            .testimonial-author {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-
-            .testimonial-author img {
-                width: 60px;
-                height: 60px;
-            }
-
-            .testimonial-author-info h4 {
-                font-size: 16px;
-            }
-
-            .testimonial-author-info p {
-                font-size: 12px;
-            }
-
-            .testimonial-dots {
-                bottom: -25px;
-                gap: 6px;
-            }
-
-            .dot {
-                width: 25px;
-                height: 2px;
-            }
-        }
-
-        /* Ajustes específicos para orientación landscape en móviles */
-        @media screen and (max-width: 767px) and (orientation: landscape) {
-            .testimonials-slider {
-                min-height: 280px;
-                padding: 20px 30px;
-            }
-
-            .testimonial-content {
-                font-size: 14px;
-                margin-bottom: 15px;
-            }
-
-            .testimonial-quote-mark {
-                font-size: 80px;
-            }
-
-            .testimonial-author img {
-                width: 45px;
-                height: 45px;
-            }
-        }
-
-        /* Ajustes para dispositivos con pantallas muy altas (modernos) */
-        @media screen and (min-height: 800px) and (max-width: 414px) {
-            .testimonials-slider {
-                min-height: 380px;
-            }
-        }
-
-        /* Soporte para pantallas retina y alta densidad de píxeles */
-        @media (-webkit-min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi) {
-            .testimonial-author img {
-                border-width: 2px;
-            }
-
-            .nav-btn {
-                border-width: 1.5px;
-            }
-        }
     </style>
 
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
+        gtag('config', 'G-XXXXXXXXXX', {
+            page_title: 'MACOTO - Intermediarios de Seguros'
+        });
 
+        // Eventos personalizados para MACOTO
+        function trackContactForm() {
+            gtag('event', 'form_submit', {
+                event_category: 'engagement',
+                event_label: 'contact_form'
+            });
+        }
 
-    <style>
-        /* SOLUCIÓN CRÍTICA: Z-INDEX ALTO PARA EL MENÚ */
-        /* Añade esto en tus estilos críticos */
-        @media screen and (max-width: 768px) {
-            nav {
-                z-index: 9999999 !important;
-                /* Asegurar z-index ultra alto */
-                transform: translateX(100%) !important;
-                /* Inicialmente fuera de pantalla */
-                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        function trackWhatsAppClick() {
+            gtag('event', 'click', {
+                event_category: 'engagement',
+                event_label: 'whatsapp_button'
+            });
+        }
+    </script>
+
+    <!-- Script para eventos automáticos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Tracking automático de WhatsApp
+            const whatsappButton = document.querySelector('.nav-whatsapp');
+            if (whatsappButton) {
+                whatsappButton.addEventListener('click', trackWhatsAppClick);
             }
 
-            nav.active {
-                transform: translateX(0) !important;
-                /* Mostrar menú */
-                box-shadow: -15px 0 35px rgba(0, 0, 0, 0.3) !important;
+            // FORMULARIO CON EMAILJS
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    const formContainer = contactForm.parentElement;
+                    formContainer.style.opacity = '0.5';
+                    formContainer.style.transform = 'scale(0.95)';
+
+                    emailjs.sendForm('macoto', 'macoto', this)
+                        .then(function () {
+                            formContainer.innerHTML = `
+                                <div class="success-message">
+                                    <div class="service-icon">✅</div>
+                                    <h3>¡Mensaje Enviado!</h3>
+                                    <p>Gracias por contactarnos. Responderemos pronto.</p>
+                                    <button onclick="location.reload()" class="btn btn-primary" style="margin-top: 20px;">Enviar Otro Mensaje</button>
+                                </div>
+                            `;
+                            formContainer.style.opacity = '1';
+                            formContainer.style.transform = 'scale(1)';
+                        }, function (error) {
+                            alert('Error al enviar: ' + JSON.stringify(error));
+                            formContainer.style.opacity = '1';
+                            formContainer.style.transform = 'scale(1)';
+                        });
+                });
             }
-
-            .mobile-toggle {
-                z-index: 99999999 !important;
-                /* Mayor que el nav */
-            }
-
-            .menu-overlay {
-                z-index: 9999998 !important;
-                /* Justo debajo del nav */
-                background: rgba(0, 0, 0, 0.7) !important;
-                backdrop-filter: blur(5px) !important;
-            }
-
-            /* Forzar visibilidad de elementos hijos */
-            nav ul,
-            nav ul li,
-            nav ul li a {
-                position: relative !important;
-                z-index: 9999999 !important;
-            }
-        }
-
-        /* Fix adicional para asegurar que nada tape el menú */
-        * {
-            z-index: 9999 !important;
-            /* Limitar z-index de otros elementos */
-        }
-
-        /* Excepciones para elementos del menú */
-        header,
-        header *,
-        nav,
-        nav *,
-        .mobile-toggle,
-        .menu-overlay {
-            z-index: none !important;
-            /* No limitar estos elementos */
-        }
-    </style>
-
-    <!-- CSS adicional para forzar la visibilidad -->
-    <style>
-        /* Forzar que el nav esté visible cuando está activo */
-        @media screen and (max-width: 768px) {
-            nav.active {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                pointer-events: auto !important;
-                right: 0 !important;
-                /* Sombra más fuerte para destacar */
-                box-shadow: -20px 0 40px rgba(0, 0, 0, 0.9) !important;
-            }
-
-            /* Asegurar que el fondo del nav sea sólido */
-            nav.active::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: #0a192f;
-                z-index: -1;
-            }
-        }
-
-        /* Fix para elementos específicos que pueden causar problemas */
-        .hero,
-        .hero-parallax,
-        .hero-layer-1,
-        .hero-layer-2,
-        .hero-layer-3,
-        .hero-layer-4,
-        .parallax-section,
-        .services-particles,
-        .about-bg-elements,
-        .floating-elements,
-        .contact-grid {
-            z-index: 0 !important;
-        }
-
-        /* Asegurar que las imágenes no tapen el menú */
-        img {
-            position: relative;
-            z-index: 1 !important;
-        }
-
-        /* Fix específico para la sección hero que suele tener z-index alto */
-        .hero {
-            z-index: 1 !important;
-        }
-
-        .hero * {
-            z-index: inherit !important;
-        }
-    </style>
-
-    <style>
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            z-index: 9999998;
-        }
-
-        .menu-overlay.active {
-            display: block;
-        }
-    </style>
-
-
+        });
+    </script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        emailjs.init('xsVNhAMEbm3nWvUb-');
+    </script>
 </head>
 
 <body>
-    <!-- Botón de WhatsApp Fijo y Visible -->
-    <!-- BOTÓN DE WHATSAPP - PRIMERO EN EL BODY CON ID -->
+    <!-- BOTÓN DE WHATSAPP ORIGINAL - COMENTADO PARA REFERENCIA -->
+    <!-- 
     <a href="https://wa.me/573043404080?text=Hola%20MACOTO,%20me%20gustaría%20recibir%20más%20información%20sobre%20sus%20servicios."
         class="whatsapp-fixed" id="whatsapp-main-button" target="_blank" rel="noopener noreferrer"
-        title="Contáctanos por WhatsApp"
-        style="position: fixed !important; bottom: 30px !important; right: 30px !important; z-index: 999999 !important; opacity: 1 !important; visibility: visible !important; display: flex !important;">
+        title="Contáctanos por WhatsApp">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 35px; height: 35px; fill: white;">
-            <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.298-.018-.458.13-.606.134-.133.298-.345.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
-                fill="white" />
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.298-.018-.458.13-.606.134-.133.298-.345.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="white" />
         </svg>
     </a>
-
-    <script>
-        (function () {
-            // Asegurar que el botón esté visible inmediatamente
-            var btn = document.getElementById('whatsapp-main-button');
-            if (btn) {
-                btn.style.cssText = 'position: fixed !important; bottom: 30px !important; right: 30px !important; width: 60px !important; height: 60px !important; background: #25D366 !important; border-radius: 50% !important; display: flex !important; justify-content: center !important; align-items: center !important; z-index: 999999 !important; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important; opacity: 1 !important; visibility: visible !important; transform: none !important;';
-                console.log('✅ WhatsApp button forzado a ser visible');
-            }
-        })();
-    </script>
-
+    -->
 
     <!-- Script para limpiar caché y cookies -->
     <script src="assets/js/cache-cleaner.js"></script>
 
-    <!-- Header -->
-
+    <!-- HEADER ANTERIOR - COMENTADO PARA REFERENCIA -->
+    <!--
     <header>
         <div class="container header-container">
             <a href="#" class="logo">MACOTO<span>.com.co</span></a>
@@ -1195,6 +1308,44 @@
             </nav>
         </div>
     </header>
+    -->
+
+    <!-- NUEVO HEADER PROFESIONAL -->
+    <header class="header-professional" id="headerProfessional">
+        <div class="container">
+            <!-- Logo -->
+            <a href="#home" class="logo-professional">MACOTO<span>.com.co</span></a>
+            
+            <!-- Toggle para móvil -->
+            <button class="mobile-toggle-professional" id="mobileToggleProfessional">☰</button>
+            
+            <!-- Navegación central con WhatsApp integrado -->
+            <nav class="nav-professional" id="navProfessional">
+                <ul>
+                    <li><a href="#home" class="nav-link-professional active">Inicio</a></li>
+                    <li><a href="#services" class="nav-link-professional">Servicios</a></li>
+                    <li><a href="#about" class="nav-link-professional">Nosotros</a></li>
+                    <li><a href="#testimonials" class="nav-link-professional">Testimonios</a></li>
+                    <li><a href="#contact" class="nav-link-professional">Contacto</a></li>
+                </ul>
+                
+                <!-- Botón WhatsApp integrado en el nav -->
+                <a href="https://wa.me/573043404080?text=Hola%20MACOTO,%20me%20gustaría%20recibir%20más%20información%20sobre%20sus%20servicios."
+                   class="nav-whatsapp" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   title="Contáctanos por WhatsApp"
+                   id="navWhatsAppButton">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.298-.018-.458.13-.606.134-.133.298-.345.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="white"/>
+                    </svg>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Overlay para navegación móvil -->
+    <div class="nav-overlay-professional" id="navOverlayProfessional"></div>
 
     <!-- Hero Section con Parallax -->
     <section class="hero parallax-section" id="home" data-scroll-speed="0.2">
@@ -1291,26 +1442,26 @@
             <div class="about-content">
                 <span class="section-label">Quiénes Somos</span>
                 <h2>Experiencia y Tecnología a tu Servicio</h2>
-                <p>En <span>MACOTO</span> fusionamos la experiencia de más de 15 años en el sector asegurador con las
+                <p>En <span>MACOTO</span> fusionamos la experiencia de más de 5 años en el sector asegurador con las
                     últimas tecnologías para ofrecer un servicio excepcional y personalizado.</p>
                 <p>Nuestro equipo de profesionales certificados analiza detalladamente cada caso para encontrar las
                     soluciones más adecuadas, siempre priorizando tus intereses y garantizando una asesoría
                     transparente.</p>
                 <div class="about-stats">
                     <div class="stat-item">
-                        <div class="stat-number">15+</div>
+                        <div class="stat-number">5+</div>
                         <div class="stat-label">Años de experiencia</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">500+</div>
+                        <div class="stat-number">150+</div>
                         <div class="stat-label">Clientes satisfechos</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">20+</div>
+                        <div class="stat-number">10+</div>
                         <div class="stat-label">Aseguradoras aliadas</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">98%</div>
+                        <div class="stat-number">87%</div>
                         <div class="stat-label">Tasa de renovación</div>
                     </div>
                 </div>
@@ -1322,7 +1473,6 @@
     </section>
 
     <!-- Testimonials Section -->
-    <!-- HTML para la sección de testimonios mejorada -->
     <section class="testimonials parallax-section" id="testimonials" data-scroll-speed="0.15">
         <div class="container">
             <div class="section-header">
@@ -1371,7 +1521,7 @@
                         </div>
                     </div>
 
-                    <!-- Testimonio 3 (opcional - puedes agregar más) -->
+                    <!-- Testimonio 3 -->
                     <div class="testimonial-item" data-index="2">
                         <div class="testimonial-content">
                             MACOTO transformó completamente nuestra visión sobre los seguros. Su enfoque tecnológico y
@@ -1379,7 +1529,7 @@
                             disponible y su respuesta es inmediata.
                         </div>
                         <div class="testimonial-author">
-                            <img src="assets/images/testimonial-3.jpg" alt="Ana Rodríguez" loading="lazy">
+                            <img src="assets/images/testimonial-1.jpg" alt="Ana Rodríguez" loading="lazy">
                             <div class="testimonial-author-info">
                                 <h4>Ana Rodríguez</h4>
                                 <p>CEO Startup Tecnológica</p>
@@ -1407,7 +1557,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -1544,72 +1693,384 @@
 
     <!-- JavaScript principal optimizado -->
     <script src="assets/js/main.js" defer></script>
-    <!-- Navegación suave mejorada -->
-    <!--<script src="assets/js/smooth-navigation.js" defer></script>-->
-    <!-- Script Agresivo para Forzar Funcionamiento -->
+
+    <!-- JAVASCRIPT COMPLETAMENTE REESCRITO PARA EL SISTEMA DE NAVEGACIÓN -->
     <script>
-        (function () {
+        (function() {
             'use strict';
 
-            console.log('🚀 Iniciando sistema de protección completo');
+            console.log('🚀 Iniciando sistema de navegación profesional - VERSIÓN FORZADA');
 
-            // 1. PROTEGER BOTÓN DE WHATSAPP
-            function ensureWhatsAppVisible() {
-                var btn = document.getElementById('whatsapp-main-button');
-                if (!btn) {
-                    // Crear nuevo botón si no existe
-                    btn = document.createElement('a');
-                    btn.href = 'https://wa.me/573043404080?text=Hola%20MACOTO,%20me%20gustaría%20recibir%20más%20información%20sobre%20sus%20servicios.';
-                    btn.className = 'whatsapp-fixed';
-                    btn.id = 'whatsapp-main-button';
-                    btn.target = '_blank';
-                    btn.rel = 'noopener noreferrer';
-                    btn.title = 'Contáctanos por WhatsApp';
-                    btn.innerHTML = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 35px; height: 35px; fill: white;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.298-.018-.458.13-.606.134-.133.298-.345.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="white"/></svg>';
-                    document.body.appendChild(btn);
+            // Esperar a que TODO esté cargado
+            function initNavigation() {
+                // Variables del nuevo sistema
+                const headerProfessional = document.getElementById('headerProfessional');
+                const navProfessional = document.getElementById('navProfessional');
+                const mobileToggleProfessional = document.getElementById('mobileToggleProfessional');
+                const navLinks = document.querySelectorAll('.nav-link-professional');
+                const navWhatsApp = document.getElementById('navWhatsAppButton');
+
+                console.log('🔍 Elementos encontrados:', {
+                    header: !!headerProfessional,
+                    nav: !!navProfessional,
+                    toggle: !!mobileToggleProfessional,
+                    links: navLinks.length
+                });
+
+                if (!headerProfessional || !navProfessional || !mobileToggleProfessional) {
+                    console.error('❌ No se encontraron todos los elementos necesarios');
+                    return;
                 }
 
-                // Forzar estilos
-                btn.style.cssText = 'position: fixed !important; bottom: 30px !important; right: 30px !important; width: 60px !important; height: 60px !important; background: #25D366 !important; border-radius: 50% !important; display: flex !important; justify-content: center !important; align-items: center !important; z-index: 999999 !important; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important; opacity: 1 !important; visibility: visible !important; transform: none !important;';
-            }
+                // 1. CREAR MENÚ MÓVIL OVERLAY SEPARADO
+                function createMobileMenuOverlay() {
+                    // Verificar si ya existe
+                    let mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+                    
+                    if (!mobileMenuOverlay) {
+                        // Crear el menú móvil overlay
+                        mobileMenuOverlay = document.createElement('nav');
+                        mobileMenuOverlay.id = 'mobileMenuOverlay';
+                        mobileMenuOverlay.className = 'nav-professional mobile-menu-overlay';
+                        
+                        // Crear contenido del menú con estilos de WhatsApp corregidos
+                        mobileMenuOverlay.innerHTML = `
+                            <ul>
+                                <li><a href="#home" class="nav-link-mobile">Inicio</a></li>
+                                <li><a href="#services" class="nav-link-mobile">Servicios</a></li>
+                                <li><a href="#about" class="nav-link-mobile">Nosotros</a></li>
+                                <li><a href="#testimonials" class="nav-link-mobile">Testimonios</a></li>
+                                <li><a href="#contact" class="nav-link-mobile">Contacto</a></li>
+                            </ul>
+                            
+                            <a href="https://wa.me/573043404080?text=Hola%20MACOTO,%20me%20gustaría%20recibir%20más%20información%20sobre%20sus%20servicios."
+                               class="nav-whatsapp" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               title="Contáctanos por WhatsApp"
+                               style="width: 70px !important; height: 70px !important; border-radius: 50% !important; aspect-ratio: 1/1 !important; flex-shrink: 0 !important; display: flex !important; align-items: center !important; justify-content: center !important;">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 32px !important; height: 32px !important;">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.298-.018-.458.13-.606.134-.133.298-.345.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="white"/>
+                                </svg>
+                            </a>
+                        `;
+                        
+                        // Agregar al body
+                        document.body.appendChild(mobileMenuOverlay);
+                        
+                        console.log('📱 Menú móvil overlay creado');
+                    }
+                    
+                    return mobileMenuOverlay;
+                }
 
-            // 2. ARREGLAR MENÚ MÓVIL
-            function fixMobileMenu() {
-                var mobileToggle = document.querySelector('.mobile-toggle');
-                var nav = document.querySelector('nav');
+                // 2. FORZAR ESTILOS CRÍTICOS - CORREGIDO
+                function forceMenuStyles() {
+                    if (window.innerWidth <= 767) {
+                        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+                        
+                        if (mobileMenuOverlay) {
+                            // Forzar estilos del menú móvil overlay
+                            mobileMenuOverlay.style.cssText = `
+                                display: flex !important;
+                                position: fixed !important;
+                                top: 0 !important;
+                                left: 0 !important;
+                                right: 0 !important;
+                                bottom: 0 !important;
+                                width: 100vw !important;
+                                height: 100vh !important;
+                                flex-direction: column !important;
+                                justify-content: center !important;
+                                align-items: center !important;
+                                background: rgba(10, 25, 47, 0.98) !important;
+                                backdrop-filter: blur(20px) !important;
+                                z-index: 2147483647 !important;
+                                gap: 20px !important;
+                                padding: 40px 30px !important;
+                                transition: all 0.4s ease !important;
+                                transform: scale(0.9) !important;
+                                opacity: 0 !important;
+                                visibility: hidden !important;
+                                pointer-events: none !important;
+                            `;
+                        }
 
-                if (mobileToggle && nav) {
-                    // Remover listeners antiguos
-                    var newToggle = mobileToggle.cloneNode(true);
-                    mobileToggle.parentNode.replaceChild(newToggle, mobileToggle);
+                        // MOSTRAR toggle en móvil
+                        if (mobileToggleProfessional) {
+                            mobileToggleProfessional.style.cssText = `
+                                display: block !important;
+                                position: relative !important;
+                                z-index: 2147483647 !important;
+                                background: rgba(10, 25, 47, 0.7) !important;
+                                border: 2px solid rgba(100, 255, 218, 0.3) !important;
+                                border-radius: 8px !important;
+                                color: #64ffda !important;
+                                font-size: 18px !important;
+                                padding: 8px 12px !important;
+                                cursor: pointer !important;
+                            `;
+                        }
 
-                    // Agregar nuevo listener
-                    newToggle.addEventListener('click', function (e) {
+                        console.log('🎨 Estilos móviles forzados');
+                    } else {
+                        // DESKTOP: OCULTAR toggle completamente
+                        if (mobileToggleProfessional) {
+                            mobileToggleProfessional.style.cssText = `
+                                display: none !important;
+                                visibility: hidden !important;
+                                opacity: 0 !important;
+                                pointer-events: none !important;
+                            `;
+                        }
+                        
+                        // DESKTOP: Ocultar menú móvil si existe
+                        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+                        if (mobileMenuOverlay) {
+                            mobileMenuOverlay.style.cssText = `
+                                display: none !important;
+                                visibility: hidden !important;
+                                opacity: 0 !important;
+                                pointer-events: none !important;
+                            `;
+                        }
+                        
+                        console.log('🖥️ Estilos desktop forzados - toggle oculto');
+                    }
+                }
+
+                // 3. FUNCIÓN DE TOGGLE MEJORADA
+                function toggleMobileMenu() {
+                    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+                    if (!mobileMenuOverlay) return;
+
+                    const isActive = mobileMenuOverlay.classList.contains('mobile-active');
+
+                    console.log('🔄 Toggle menu, estado actual:', isActive);
+
+                    if (isActive) {
+                        // Cerrar menú
+                        mobileMenuOverlay.classList.remove('mobile-active');
+                        mobileMenuOverlay.style.opacity = '0';
+                        mobileMenuOverlay.style.visibility = 'hidden';
+                        mobileMenuOverlay.style.transform = 'scale(0.9)';
+                        mobileMenuOverlay.style.pointerEvents = 'none';
+                        mobileToggleProfessional.textContent = '☰';
+                        document.body.style.overflow = '';
+                        console.log('📱 Menú cerrado');
+                    } else {
+                        // Forzar estilos antes de abrir
+                        forceMenuStyles();
+                        
+                        // Abrir menú
+                        setTimeout(() => {
+                            mobileMenuOverlay.classList.add('mobile-active');
+                            mobileMenuOverlay.style.opacity = '1';
+                            mobileMenuOverlay.style.visibility = 'visible';
+                            mobileMenuOverlay.style.transform = 'scale(1)';
+                            mobileMenuOverlay.style.pointerEvents = 'auto';
+                            mobileToggleProfessional.textContent = '✕';
+                            document.body.style.overflow = 'hidden';
+                            console.log('📱 Menú abierto');
+                        }, 10);
+                    }
+                }
+
+                // 4. EVENT LISTENERS
+                if (mobileToggleProfessional) {
+                    mobileToggleProfessional.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
-
-                        nav.classList.toggle('active');
-                        newToggle.textContent = nav.classList.contains('active') ? '✕' : '☰';
-
-                        console.log('Menu toggled:', nav.classList.contains('active'));
+                        console.log('🖱️ Click en toggle');
+                        toggleMobileMenu();
                     });
                 }
+
+                // Cerrar al hacer clic en el fondo del menú móvil
+                document.addEventListener('click', function(e) {
+                    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+                    if (mobileMenuOverlay && e.target === mobileMenuOverlay && window.innerWidth <= 767) {
+                        console.log('🖱️ Click en fondo del menú');
+                        toggleMobileMenu();
+                    }
+                });
+
+                // Event listeners para enlaces del menú móvil - CORREGIDO
+                document.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('nav-link-mobile')) {
+                        e.preventDefault();
+                        const targetId = e.target.getAttribute('href');
+                        console.log('🖱️ Click en enlace móvil:', targetId);
+                        
+                        // SIEMPRE cerrar el menú primero
+                        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+                        if (mobileMenuOverlay && mobileMenuOverlay.classList.contains('mobile-active')) {
+                            toggleMobileMenu();
+                        }
+                        
+                        // Luego navegar después de un pequeño delay
+                        if (targetId.startsWith('#')) {
+                            setTimeout(() => {
+                                smoothScroll(targetId);
+                            }, 200);
+                        }
+                    }
+                });
+
+                // 5. NAVEGACIÓN SUAVE
+                function smoothScroll(target, duration = 800) {
+                    const targetElement = document.querySelector(target);
+                    if (!targetElement) return;
+
+                    const headerOffset = 90;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+
+                    let startTime = null;
+
+                    function animation(currentTime) {
+                        if (startTime === null) startTime = currentTime;
+                        const timeElapsed = currentTime - startTime;
+                        const progress = Math.min(timeElapsed / duration, 1);
+
+                        const ease = function(t) {
+                            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                        };
+
+                        window.scrollTo(0, startPosition + distance * ease(progress));
+
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        } else {
+                            updateActiveNavLink();
+                        }
+                    }
+
+                    requestAnimationFrame(animation);
+                }
+
+                // 6. ACTUALIZAR ENLACE ACTIVO
+                function updateActiveNavLink() {
+                    const scrollPosition = window.scrollY + 150;
+                    const sections = document.querySelectorAll('section');
+
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.offsetHeight;
+                        const sectionId = '#' + section.getAttribute('id');
+
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                            navLinks.forEach(link => {
+                                link.classList.remove('active');
+                                if (link.getAttribute('href') === sectionId) {
+                                    link.classList.add('active');
+                                }
+                            });
+                        }
+                    });
+                }
+
+                // 7. EVENT LISTENERS PARA NAVEGACIÓN DESKTOP
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+
+                        console.log('🖱️ Click en enlace:', targetId);
+
+                        if (targetId.startsWith('#')) {
+                            smoothScroll(targetId);
+                            
+                            // Cerrar menú móvil si está abierto
+                            if (window.innerWidth <= 767 && navProfessional.classList.contains('mobile-active')) {
+                                toggleMobileMenu();
+                            }
+                        }
+                    });
+                });
+
+                // 8. SCROLL HEADER EFFECT
+                let lastScrollY = 0;
+                let ticking = false;
+
+                function updateHeaderOnScroll() {
+                    const scrollY = window.scrollY;
+
+                    if (scrollY > 50) {
+                        headerProfessional.classList.add('scrolled');
+                    } else {
+                        headerProfessional.classList.remove('scrolled');
+                    }
+
+                    lastScrollY = scrollY;
+                    ticking = false;
+                }
+
+                window.addEventListener('scroll', function() {
+                    if (!ticking) {
+                        requestAnimationFrame(updateHeaderOnScroll);
+                        ticking = true;
+                    }
+                });
+
+                // 9. TRACKING DE WHATSAPP
+                if (navWhatsApp) {
+                    navWhatsApp.addEventListener('click', function() {
+                        console.log('📱 WhatsApp clicked from nav');
+                        if (typeof trackWhatsAppClick === 'function') {
+                            trackWhatsAppClick();
+                        }
+                    });
+                }
+
+                // 10. MANEJAR REDIMENSIONAMIENTO
+                let resizeTimer;
+                window.addEventListener('resize', function() {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(function() {
+                        forceMenuStyles();
+                        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+                        if (window.innerWidth > 767 && mobileMenuOverlay && mobileMenuOverlay.classList.contains('mobile-active')) {
+                            mobileMenuOverlay.classList.remove('mobile-active');
+                            mobileMenuOverlay.style.opacity = '0';
+                            mobileMenuOverlay.style.visibility = 'hidden';
+                            mobileMenuOverlay.style.pointerEvents = 'none';
+                            mobileToggleProfessional.textContent = '☰';
+                            document.body.style.overflow = '';
+                        }
+                    }, 250);
+                });
+
+                // 11. SCROLL TRACKING
+                let scrollTimeout;
+                window.addEventListener('scroll', function() {
+                    if (scrollTimeout) return;
+
+                    scrollTimeout = setTimeout(function() {
+                        updateActiveNavLink();
+                        scrollTimeout = null;
+                    }, 100);
+                });
+
+                // 12. INICIALIZACIÓN
+                createMobileMenuOverlay();
+                forceMenuStyles();
+                updateActiveNavLink();
+
+                console.log('✅ Sistema de navegación profesional iniciado - VERSIÓN SEPARADA');
             }
 
-            // EJECUTAR TODO
-            function initializeEverything() {
-                ensureWhatsAppVisible();
-                fixMobileMenu();
-                // ... resto de funciones
+            // Ejecutar cuando esté listo
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initNavigation);
+            } else {
+                initNavigation();
             }
 
-            // Ejecutar inmediatamente
-            initializeEverything();
-
-            // Verificar cada 500ms
-            setInterval(ensureWhatsAppVisible, 500);
-
-            console.log('✅ Sistema de protección iniciado completamente');
+            // También ejecutar después de un momento por seguridad
+            setTimeout(initNavigation, 1000);
+            
         })();
     </script>
 
@@ -1695,7 +2156,7 @@
             function startAutoplay() {
                 testimonialInterval = setInterval(() => {
                     changeTestimonial('next');
-                }, 8000); // Cambiado de 5000ms a 8000ms (8 segundos)
+                }, 8000);
             }
 
             function resetAutoplay() {
@@ -1705,163 +2166,120 @@
 
             // Pausar en hover
             const slider = document.getElementById('testimonialSlider');
-            slider.addEventListener('mouseenter', () => clearInterval(testimonialInterval));
-            slider.addEventListener('mouseleave', startAutoplay);
+            if (slider) {
+                slider.addEventListener('mouseenter', () => clearInterval(testimonialInterval));
+                slider.addEventListener('mouseleave', startAutoplay);
+            }
 
-            // Inicializar
-            createDots();
-            createParticles();
-            startAutoplay();
+            // Inicializar solo si existen elementos
+            if (testimonials.length > 0 && dotsContainer && particlesContainer) {
+                createDots();
+                createParticles();
+                startAutoplay();
+            }
 
             // Hacer funciones globales para los botones
             window.changeTestimonial = changeTestimonial;
         })();
     </script>
 
-
-
-
-    <!-- Script dedicado para el menú móvil -->
+    <!-- Script para funcionalidades del formulario y efectos principales -->
     <script>
-        (function () {
-            'use strict';
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Iniciando funcionalidades principales...');
 
-            console.log('🔧 Iniciando fix del menú móvil...');
-
-            // Esperar a que el DOM esté listo
-            function initMobileMenu() {
-                const mobileToggle = document.querySelector('.mobile-toggle');
-                const nav = document.querySelector('nav');
-                const header = document.querySelector('header');
-
-                if (!mobileToggle || !nav) {
-                    console.log('❌ No se encontraron elementos del menú');
-                    return;
-                }
-
-                console.log('✅ Elementos encontrados:', { mobileToggle, nav });
-
-                // Crear overlay si no existe
-                let overlay = document.querySelector('.menu-overlay');
-                if (!overlay) {
-                    overlay = document.createElement('div');
-                    overlay.className = 'menu-overlay';
-                    document.body.appendChild(overlay);
-                }
-
-                // Remover todos los event listeners antiguos
-                const newToggle = mobileToggle.cloneNode(true);
-                mobileToggle.parentNode.replaceChild(newToggle, mobileToggle);
-
-                // Función para abrir/cerrar menú
-                function toggleMenu() {
-                    const isActive = nav.classList.contains('active');
-
-                    if (isActive) {
-                        // Cerrar menú
-                        nav.classList.remove('active');
-                        overlay.classList.remove('active');
-                        newToggle.textContent = '☰';
-                        document.body.style.overflow = '';
-                        console.log('📱 Menú cerrado');
-                    } else {
-                        // Abrir menú
-                        nav.classList.add('active');
-                        overlay.classList.add('active');
-                        newToggle.textContent = '✕';
-                        document.body.style.overflow = 'hidden';
-                        console.log('📱 Menú abierto');
-                    }
-                }
-
-                // Event listener para el botón
-                newToggle.addEventListener('click', function (e) {
+            // Formulario de contacto
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    e.stopPropagation();
-                    toggleMenu();
-                });
 
-                // Cerrar menú al hacer clic en el overlay
-                overlay.addEventListener('click', toggleMenu);
+                    // Validación básica
+                    let isValid = true;
+                    const nameInput = document.getElementById('name');
+                    const emailInput = document.getElementById('email');
+                    const messageInput = document.getElementById('message');
 
-                // Cerrar menú al hacer clic en un enlace
-                const navLinks = nav.querySelectorAll('a');
-                navLinks.forEach(link => {
-                    link.addEventListener('click', function () {
-                        if (window.innerWidth <= 768) {
-                            nav.classList.remove('active');
-                            overlay.classList.remove('active');
-                            newToggle.textContent = '☰';
-                            document.body.style.overflow = '';
+                    // Reiniciar estados de error
+                    [nameInput, emailInput, messageInput].forEach(input => {
+                        if (input) {
+                            input.style.borderColor = '';
+                            const label = input.nextElementSibling;
+                            if (label) label.classList.remove('active');
                         }
                     });
-                });
 
-                // Manejar cambio de tamaño de ventana
-                let resizeTimer;
-                window.addEventListener('resize', function () {
-                    clearTimeout(resizeTimer);
-                    resizeTimer = setTimeout(function () {
-                        if (window.innerWidth > 768) {
-                            nav.classList.remove('active');
-                            overlay.classList.remove('active');
-                            newToggle.textContent = '☰';
-                            document.body.style.overflow = '';
+                    // Validar nombre
+                    if (nameInput && !nameInput.value.trim()) {
+                        nameInput.style.borderColor = 'rgba(255, 0, 0, 0.5)';
+                        nameInput.style.boxShadow = '0 0 10px rgba(255, 0, 0, 0.2)';
+                        isValid = false;
+                    }
+
+                    // Validar email
+                    if (emailInput) {
+                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailPattern.test(emailInput.value)) {
+                            emailInput.style.borderColor = 'rgba(255, 0, 0, 0.5)';
+                            emailInput.style.boxShadow = '0 0 10px rgba(255, 0, 0, 0.2)';
+                            isValid = false;
                         }
-                    }, 250);
+                    }
+
+                    // Validar mensaje
+                    if (messageInput && !messageInput.value.trim()) {
+                        messageInput.style.borderColor = 'rgba(255, 0, 0, 0.5)';
+                        messageInput.style.boxShadow = '0 0 10px rgba(255, 0, 0, 0.2)';
+                        isValid = false;
+                    }
+
+                    // Si es válido, enviar formulario con animación
+                    if (isValid) {
+                        const formContainer = contactForm.parentElement;
+                        formContainer.style.opacity = '0.5';
+                        formContainer.style.transform = 'scale(0.95)';
+                        
+                        // Simular envío del formulario (aquí puedes integrar EmailJS o tu servicio preferido)
+                        setTimeout(() => {
+                            formContainer.innerHTML = `
+                                <div class="success-message">
+                                    <div class="service-icon">✓</div>
+                                    <h3>¡Mensaje Enviado!</h3>
+                                    <p>Gracias por contactarnos. Responderemos a tu mensaje tan pronto como sea posible.</p>
+                                </div>
+                            `;
+                            formContainer.style.opacity = '1';
+                            formContainer.style.transform = 'scale(1)';
+                        }, 1000);
+                    }
                 });
 
-                console.log('✅ Menú móvil inicializado correctamente');
-            }
+                // Animación para etiquetas del formulario
+                const formInputs = document.querySelectorAll('.form-input');
+                if (formInputs.length > 0) {
+                    formInputs.forEach(input => {
+                        input.addEventListener('focus', function() {
+                            const label = this.nextElementSibling;
+                            if (label) label.classList.add('active');
+                        });
 
-            // Inicializar cuando el DOM esté listo
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initMobileMenu);
-            } else {
-                initMobileMenu();
-            }
+                        input.addEventListener('blur', function() {
+                            const label = this.nextElementSibling;
+                            if (label && !this.value) {
+                                label.classList.remove('active');
+                            }
+                        });
 
-            // Reintentar después de un momento por si hay conflictos
-            setTimeout(initMobileMenu, 500);
-        })();
-    </script>
-
-    <script>
-        // Reemplaza tu script actual del menú móvil con este
-        document.addEventListener('DOMContentLoaded', function () {
-            const mobileToggle = document.querySelector('.mobile-toggle');
-            const nav = document.querySelector('nav');
-            const body = document.body;
-
-            // Crear overlay si no existe
-            let overlay = document.createElement('div');
-            overlay.className = 'menu-overlay';
-            document.body.appendChild(overlay);
-
-            function toggleMenu() {
-                nav.classList.toggle('active');
-                overlay.classList.toggle('active');
-                mobileToggle.textContent = nav.classList.contains('active') ? '✕' : '☰';
-                body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-            }
-
-            // Event Listeners
-            mobileToggle.addEventListener('click', toggleMenu);
-            overlay.addEventListener('click', toggleMenu);
-
-            // Cerrar menú al hacer clic en enlaces
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth <= 768) toggleMenu();
-                });
-            });
-
-            // Cerrar menú al redimensionar
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 768 && nav.classList.contains('active')) {
-                    toggleMenu();
+                        // Verificar si el input ya tiene valor al cargar
+                        if (input.value) {
+                            const label = input.nextElementSibling;
+                            if (label) label.classList.add('active');
+                        }
+                    });
                 }
-            });
+            }
+
+            console.log('✅ Funcionalidades principales iniciadas');
         });
     </script>
 </body>
