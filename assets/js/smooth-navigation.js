@@ -15,14 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const targetElement = document.querySelector(target);
         if (!targetElement) return;
         
-        // Cerrar menú móvil si está abierto
-        const nav = document.querySelector('nav');
-        const mobileToggle = document.querySelector('.mobile-toggle');
-        if (nav && nav.classList.contains('active')) {
-            nav.classList.remove('active');
-            if (mobileToggle) mobileToggle.textContent = '☰';
-        }
-        
         // Calcular posición de inicio y distancia a recorrer
         const headerOffset = 80; // compensar la altura del header fijo
         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;

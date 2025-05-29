@@ -4,7 +4,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Variables
     const header = document.querySelector('header');
-    const mobileToggle = document.querySelector('.mobile-toggle');
     const nav = document.querySelector('nav');
     
     // ÚNICA ADICIÓN: Eliminar las ruedas de los iconos de servicio
@@ -50,25 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Mobile Navigation Toggle
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', function() {
-            nav.classList.toggle('active');
-            mobileToggle.textContent = nav.classList.contains('active') ? '✕' : '☰';
-        });
-    }
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (nav && mobileToggle) {
-            const isClickInsideNav = nav.contains(event.target);
-            const isClickOnToggle = mobileToggle.contains(event.target);
-
-            if (!isClickInsideNav && !isClickOnToggle && nav.classList.contains('active')) {
-                nav.classList.remove('active');
-                mobileToggle.textContent = '☰';
-            }
-        }
-    });
 
     // *** IMPORTANTE: La funcionalidad de scroll ha sido movida a smooth-navigation.js ***
 
@@ -364,128 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Slider de testimonios optimizado
     function initTestimonialSlider() {
-        const testimonialItems = document.querySelectorAll('.testimonial-item');
-        const sliderContainer = document.querySelector('.testimonials-slider');
-        
-        if (testimonialItems.length > 1 && sliderContainer) {
-            // Crear navegación con puntos
-            const dotsContainer = document.createElement('div');
-            dotsContainer.className = 'slider-dots';
-            dotsContainer.style.display = 'flex';
-            dotsContainer.style.justifyContent = 'center';
-            dotsContainer.style.marginTop = '20px';
-            
-            testimonialItems.forEach((item, index) => {
-                const dot = document.createElement('span');
-                dot.className = 'slider-dot';
-                dot.style.width = '12px';
-                dot.style.height = '12px';
-                dot.style.borderRadius = '50%';
-                dot.style.background = 'rgba(100, 255, 218, 0.3)';
-                dot.style.margin = '0 5px';
-                dot.style.cursor = 'pointer';
-                dot.style.transition = 'all 0.3s ease';
-                
-                if (index === 0) {
-                    dot.style.background = 'rgba(100, 255, 218, 0.9)';
-                    dot.style.transform = 'scale(1.2)';
-                }
-                
-                dot.addEventListener('click', () => {
-                    // Eliminar clase activa de todos los puntos
-                    dotsContainer.querySelectorAll('.slider-dot').forEach(d => {
-                        d.style.background = 'rgba(100, 255, 218, 0.3)';
-                        d.style.transform = 'scale(1)';
-                    });
-                    
-                    // Añadir clase activa al seleccionado
-                    dot.style.background = 'rgba(100, 255, 218, 0.9)';
-                    dot.style.transform = 'scale(1.2)';
-                    
-                    // Mostrar el testimonio seleccionado
-                    testimonialItems.forEach((item, i) => {
-                        if (i === index) {
-                            item.style.display = 'block';
-                            setTimeout(() => {
-                                item.style.opacity = '1';
-                            }, 50);
-                        } else {
-                            item.style.opacity = '0';
-                            setTimeout(() => {
-                                item.style.display = 'none';
-                            }, 300);
-                        }
-                    });
-                });
-                
-                dotsContainer.appendChild(dot);
-            });
-            
-            sliderContainer.appendChild(dotsContainer);
-            
-            // Mostrar solo el primer item por defecto
-            testimonialItems.forEach((item, index) => {
-                if (index === 0) {
-                    item.style.display = 'block';
-                    item.style.opacity = '1';
-                } else {
-                    item.style.display = 'none';
-                    item.style.opacity = '0';
-                }
-            });
-            
-            // Cambio automático optimizado
-            let currentIndex = 0;
-            let slideshowTimeout;
-            
-            function switchTestimonial() {
-                // Incrementar índice
-                currentIndex = (currentIndex + 1) % testimonialItems.length;
-                
-                // Actualizar puntos
-                dotsContainer.querySelectorAll('.slider-dot').forEach((dot, i) => {
-                    if (i === currentIndex) {
-                        dot.style.background = 'rgba(100, 255, 218, 0.9)';
-                        dot.style.transform = 'scale(1.2)';
-                    } else {
-                        dot.style.background = 'rgba(100, 255, 218, 0.3)';
-                        dot.style.transform = 'scale(1)';
-                    }
-                });
-                
-                // Ocultar el testimonio actual
-                testimonialItems.forEach(item => {
-                    item.style.opacity = '0';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                });
-                
-                // Mostrar el nuevo testimonio
-                setTimeout(() => {
-                    testimonialItems[currentIndex].style.display = 'block';
-                    
-                    // Forzar reflow
-                    testimonialItems[currentIndex].offsetHeight;
-                    
-                    testimonialItems[currentIndex].style.opacity = '1';
-                }, 350);
-                
-                // Programar siguiente cambio (más lento)
-                slideshowTimeout = setTimeout(switchTestimonial, isMobile ? 8000 : 6000);
-            }
-            
-            // Iniciar slideshow con retraso
-            slideshowTimeout = setTimeout(switchTestimonial, 6000);
-            
-            // Detener slideshow al interactuar
-            sliderContainer.addEventListener('mouseenter', () => {
-                clearTimeout(slideshowTimeout);
-            });
-            
-            sliderContainer.addEventListener('mouseleave', () => {
-                slideshowTimeout = setTimeout(switchTestimonial, 6000);
-            });
-        }
+        // Función vacía - los testimonios se manejan desde el script agresivo
+        console.log('Testimonios manejados por script externo');
     }
 });
