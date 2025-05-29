@@ -3,6 +3,71 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- ESTILOS CRÍTICOS - DEBEN IR PRIMERO -->
+    <style id="critical-fixes">
+        /* FORZAR VISIBILIDAD DEL WHATSAPP */
+        .whatsapp-fixed {
+            position: fixed !important;
+            bottom: 30px !important;
+            right: 30px !important;
+            width: 60px !important;
+            height: 60px !important;
+            background: #25D366 !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            z-index: 999999 !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            text-decoration: none !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+            transition: box-shadow 0.3s ease !important;
+            top: auto !important;
+            left: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            overflow: visible !important;
+            clip: auto !important;
+            clip-path: none !important;
+            filter: none !important;
+            pointer-events: auto !important;
+            user-select: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+
+        .whatsapp-fixed:hover {
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4) !important;
+            transform: scale(1.05) !important;
+        }
+
+        .whatsapp-fixed svg {
+            width: 35px !important;
+            height: 35px !important;
+            fill: white !important;
+        }
+
+        body>*:not(.whatsapp-fixed) {
+            position: relative;
+            z-index: auto !important;
+        }
+
+        @media screen and (max-width: 768px) {
+            .whatsapp-fixed {
+                bottom: 20px !important;
+                right: 20px !important;
+                width: 55px !important;
+                height: 55px !important;
+            }
+
+            .whatsapp-fixed svg {
+                width: 30px !important;
+                height: 30px !important;
+            }
+        }
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -13,7 +78,7 @@
     <meta name="description"
         content="🛡️ MACOTO: Líderes en intermediación de seguros en Bogotá. ✅ +5 años de experiencia ✅ Seguros empresariales y personales ✅ Asesoría especializada ✅ Cotización gratuita ☎️ 304-340-4080">
     <meta name="keywords"
-        content="seguros bogotá, intermediarios seguros colombia, seguros empresariales, seguros personales, MACOTO seguros, intermediación seguros, asesoría seguros, cotización seguros">
+        content="Arl,ARL,Seguros,seguros,seguros bogotá, intermediarios seguros colombia, intermediarios de seguros, seguros empresariales, seguros personales, MACOTO seguros, Macoto, macoto, intermediación seguros, asesoría seguros, cotización seguros">
     <meta name="author" content="MACOTO Intermediarios de Seguros">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="google-site-verification" content="SFwpUY4yoApqS0n8uOUXgZDdDPrnEyXrNrSgCaiqAyA" />
@@ -116,7 +181,6 @@
     <link rel="stylesheet" href="assets/css/scroll-fix.css">
     <!-- CSS para corregir fondos en dispositivos móviles -->
     <link rel="stylesheet" href="assets/css/mobile-background-fix.css">
-    <!-- REMOVIDO: whatsapp-fixes.css (404 error) - estilos incluidos inline -->
 
     <!-- CSS para correcciones -->
     <style>
@@ -236,228 +300,28 @@
             background-color: var(--dark-blue) !important;
         }
 
-        /* CORRECCIÓN: Evitar salto de página en testimonios - VERSIÓN SIMPLE Y FUNCIONAL */
-        .testimonials-slider {
-            min-height: 400px;
-            /* Altura mínima fija */
-            position: relative;
-        }
-
-        .testimonial-item {
-            width: 100%;
-            margin-bottom: 30px;
-            transition: all 0.5s ease;
-        }
-
-        /* No más positioning absoluto complicado - usar display simple */
-        .testimonial-item:not(.active) {
-            display: none;
-        }
-
-        .testimonial-item.active {
-            display: block;
-            animation: fadeInUp 0.5s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Asegurar que las imágenes mantengan su diseño original */
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .testimonial-author img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 20px;
-            object-fit: cover;
-        }
-
-        @media screen and (max-width: 768px) {
-            .testimonials-slider {
-                min-height: 350px;
-            }
-        }
-
-        @media screen and (max-width: 576px) {
-            .testimonials-slider {
-                min-height: 320px;
-            }
-        }
-
-        /* CORRECCIÓN: Asegurar que el botón de WhatsApp SIEMPRE esté visible */
-        .whatsapp-float {
-            position: fixed !important;
-            bottom: 30px !important;
-            right: 30px !important;
-            z-index: 99999 !important;
-            /* Z-index muy alto */
-            opacity: 1 !important;
-            visibility: visible !important;
-            pointer-events: auto !important;
-            display: flex !important;
-            transform: none !important;
-        }
-
-        /* Asegurar visibilidad en móviles */
-        @media screen and (max-width: 768px) {
-            .whatsapp-float {
-                bottom: 20px !important;
-                right: 20px !important;
-                width: 50px !important;
-                height: 50px !important;
-            }
-        }
-
-        @media screen and (max-width: 360px) {
-            .whatsapp-float {
-                bottom: 15px !important;
-                right: 15px !important;
-                width: 45px !important;
-                height: 45px !important;
-            }
-        }
-
-        /* FORZAR visibilidad cuando hay navegación activa */
-        .whatsapp-float.force-visible {
-            opacity: 1 !important;
-            visibility: visible !important;
-            display: flex !important;
-            transform: scale(1) !important;
-            transition: all 0.3s ease !important;
-        }
-
-        /* Solo ocultar cuando el menú móvil está explícitamente abierto */
-        nav.active~.whatsapp-float,
-        body.menu-open .whatsapp-float {
-            opacity: 0 !important;
-            visibility: hidden !important;
-            transform: scale(0.8) !important;
-        }
-
-        /* Anular cualquier otro CSS que pueda estar ocultando el botón */
-        .whatsapp-float:not(.explicitly-hidden) {
-            opacity: 1 !important;
-            visibility: visible !important;
-            display: flex !important;
-        }
-
-        /* SOLUCIÓN: Incluir TODOS los estilos de WhatsApp aquí para evitar el 404 */
-        .whatsapp-float {
-            position: fixed !important;
-            width: 60px !important;
-            height: 60px !important;
-            bottom: 30px !important;
-            right: 30px !important;
-            background: rgba(10, 25, 47, 0.7) !important;
-            color: var(--cyan) !important;
-            border-radius: 50% !important;
-            text-align: center !important;
-            box-shadow: 0 0 15px rgba(100, 255, 218, 0.5) !important;
-            z-index: 99999 !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            transition: all 0.3s ease !important;
-            border: 2px solid var(--cyan) !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-            pointer-events: auto !important;
-            text-decoration: none !important;
-        }
-
-        /* Efecto hover del WhatsApp */
-        .whatsapp-float:hover {
-            background: rgba(100, 255, 218, 0.1) !important;
-            transform: translateY(-5px) !important;
-            box-shadow: 0 0 25px rgba(100, 255, 218, 0.8) !important;
-        }
-
-        /* Estilo del ícono SVG del WhatsApp */
-        .whatsapp-float svg {
-            color: var(--cyan) !important;
-            filter: drop-shadow(0 0 5px rgba(100, 255, 218, 0.7)) !important;
-            width: 30px !important;
-            height: 30px !important;
-            transition: all 0.3s ease !important;
-        }
-
-        /* Efecto en hover para el SVG */
-        .whatsapp-float:hover svg {
-            filter: drop-shadow(0 0 8px rgba(100, 255, 218, 0.9)) !important;
-            transform: scale(1.2) !important;
-        }
-
-        /* Efecto de gradient en el borde, visible en hover */
-        .whatsapp-float::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 50%;
-            background: var(--accent-gradient);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            animation: gradientFlow 3s linear infinite;
-        }
-
-        .whatsapp-float:hover::after {
-            opacity: 1;
-        }
-
-        /* Variables CSS necesarias para el WhatsApp */
+        /* Variables CSS necesarias */
         :root {
             --cyan: #64ffda;
             --accent-gradient: linear-gradient(120deg, #64ffda, #38a89d, #0a9396);
         }
-
-        /* Responsive para WhatsApp */
-        @media screen and (max-width: 768px) {
-            .whatsapp-float {
-                width: 50px !important;
-                height: 50px !important;
-                right: 20px !important;
-                bottom: 20px !important;
-            }
-
-            .whatsapp-float svg {
-                width: 24px !important;
-                height: 24px !important;
-            }
+    </style>
+    <style>
+        /* FIX PARA EL MENÚ MÓVIL */
+        nav.active {
+            display: block !important;
+            right: 0 !important;
         }
 
-        @media screen and (max-width: 360px) {
-            .whatsapp-float {
-                width: 45px !important;
-                height: 45px !important;
-                right: 15px !important;
-                bottom: 15px !important;
-            }
-
-            .whatsapp-float svg {
-                width: 20px !important;
-                height: 20px !important;
+        @media screen and (max-width: 768px) {
+            nav {
+                display: block !important;
+                /* Importante */
             }
         }
     </style>
 
-    <!-- Google Analytics 4 - AGREGAR ESTO ANTES DE CERRAR </head> -->
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -488,23 +352,23 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Tracking automático de WhatsApp
-            const whatsappButton = document.querySelector('.whatsapp-float, .whatsapp-viewport');
+            const whatsappButton = document.querySelector('.whatsapp-fixed');
             if (whatsappButton) {
                 whatsappButton.addEventListener('click', trackWhatsAppClick);
             }
-        
+
             // FORMULARIO CON EMAILJS
             const contactForm = document.getElementById('contact-form');
             if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
+                contactForm.addEventListener('submit', function (e) {
                     e.preventDefault();
-                    
+
                     const formContainer = contactForm.parentElement;
                     formContainer.style.opacity = '0.5';
                     formContainer.style.transform = 'scale(0.95)';
-                    
+
                     emailjs.sendForm('macoto', 'macoto', this)
-                        .then(function() {
+                        .then(function () {
                             formContainer.innerHTML = `
                                 <div class="success-message">
                                     <div class="service-icon">✅</div>
@@ -515,7 +379,7 @@
                             `;
                             formContainer.style.opacity = '1';
                             formContainer.style.transform = 'scale(1)';
-                        }, function(error) {
+                        }, function (error) {
                             alert('Error al enviar: ' + JSON.stringify(error));
                             formContainer.style.opacity = '1';
                             formContainer.style.transform = 'scale(1)';
@@ -523,32 +387,806 @@
                 });
             }
         });
-        </script>
+    </script>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         emailjs.init('xsVNhAMEbm3nWvUb-');
     </script>
-</head>
+    <!-- NUEVO SISTEMA DE TESTIMONIOS CON ANIMACIÓN ELEGANTE -->
+    <style>
+        /* Estilos para el nuevo sistema de testimonios */
+        .testimonials-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .testimonials-slider {
+            position: relative;
+            min-height: 320px;
+            overflow: hidden;
+            border-radius: 20px;
+            background: rgba(10, 25, 47, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+
+        .testimonial-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonial-item.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .testimonial-item.prev {
+            transform: translateX(-30px);
+        }
+
+        /* Efecto de entrada más suave */
+        @keyframes testimonialFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+                filter: blur(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .testimonial-item.entering {
+            animation: testimonialFadeIn 0.8s ease-out forwards;
+        }
+
+        /* Quote mark decorativo */
+        .testimonial-quote-mark {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            font-size: 180px;
+            color: rgba(100, 255, 218, 0.05);
+            font-family: Georgia, serif;
+            line-height: 1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            font-size: 18px;
+            line-height: 1.8;
+            color: rgba(230, 232, 230, 0.9);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(100, 255, 218, 0.3);
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-item.active .testimonial-author img {
+            animation: authorImagePulse 2s ease-out;
+        }
+
+        @keyframes authorImagePulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .testimonial-author-info h4 {
+            font-size: 20px;
+            color: #e6e8e6;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-author-info p {
+            font-size: 14px;
+            color: #64ffda;
+            opacity: 0.8;
+        }
+
+        /* Dots mejorados con efecto de progreso */
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .dot {
+            width: 40px;
+            height: 4px;
+            background: rgba(100, 255, 218, 0.2);
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .dot::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: #64ffda;
+            border-radius: 2px;
+            transition: width 8s linear;
+            /* Cambiado de 5s a 8s para sincronizar con el autoplay */
+        }
+
+        .dot.active::before {
+            width: 100%;
+        }
+
+        .dot:hover {
+            background: rgba(100, 255, 218, 0.3);
+        }
+
+        /* Navegación con flechas opcionales */
+        .testimonial-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 60px;
+            /* Aumentado de 20px a 60px para acercar las flechas al centro */
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(10, 25, 47, 0.5);
+            border: 2px solid rgba(100, 255, 218, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: all;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .testimonials-slider:hover .nav-btn {
+            opacity: 1;
+        }
+
+        .nav-btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+            border-color: #64ffda;
+            transform: scale(1.1);
+        }
+
+        .nav-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #64ffda;
+        }
+
+        /* Efecto de partículas flotantes para ambiente */
+        .testimonial-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle-float {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #64ffda;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: floatUp 15s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100%) translateX(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.3;
+            }
+
+            90% {
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateY(-100%) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design Completo */
+
+        /* Desktop Extra Grande (1920px y más) */
+        @media screen and (min-width: 1920px) {
+            .testimonials-container {
+                max-width: 1200px;
+            }
+
+            .testimonials-slider {
+                min-height: 380px;
+                padding: 60px;
+            }
+
+            .testimonial-nav {
+                padding: 0 120px;
+            }
+
+            .nav-btn {
+                width: 60px;
+                height: 60px;
+            }
+
+            .testimonial-content {
+                font-size: 20px;
+                line-height: 1.9;
+            }
+
+            .testimonial-author img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        /* Desktop Grande (1440px a 1919px) */
+        @media screen and (min-width: 1440px) and (max-width: 1919px) {
+            .testimonials-slider {
+                min-height: 350px;
+                padding: 50px;
+            }
+
+            .testimonial-nav {
+                padding: 0 80px;
+            }
+
+            .nav-btn {
+                width: 55px;
+                height: 55px;
+            }
+        }
+
+        /* Desktop Estándar (1200px a 1439px) */
+        @media screen and (min-width: 1200px) and (max-width: 1439px) {
+            .testimonials-slider {
+                min-height: 340px;
+                padding: 45px;
+            }
+
+            .testimonial-nav {
+                padding: 0 60px;
+            }
+        }
+
+        /* Laptop (992px a 1199px) */
+        @media screen and (min-width: 992px) and (max-width: 1199px) {
+            .testimonials-slider {
+                min-height: 330px;
+                padding: 40px;
+            }
+
+            .testimonial-nav {
+                padding: 0 50px;
+            }
+
+            .testimonial-content {
+                font-size: 17px;
+            }
+        }
+
+        /* Tablet Landscape (768px a 991px) */
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+            .testimonials-slider {
+                min-height: 350px;
+                padding: 35px;
+            }
+
+            .testimonial-nav {
+                padding: 0 40px;
+            }
+
+            .nav-btn {
+                width: 45px;
+                height: 45px;
+            }
+
+            .testimonial-quote-mark {
+                font-size: 140px;
+            }
+
+            .testimonial-content {
+                font-size: 16px;
+            }
+
+            .testimonial-author img {
+                width: 65px;
+                height: 65px;
+            }
+        }
+
+        /* Tablet Portrait (576px a 767px) */
+        @media screen and (min-width: 576px) and (max-width: 767px) {
+            .testimonials-slider {
+                min-height: 380px;
+                padding: 30px;
+            }
+
+            .testimonial-nav {
+                padding: 0 25px;
+            }
+
+            .nav-btn {
+                width: 42px;
+                height: 42px;
+                background: rgba(10, 25, 47, 0.7);
+            }
+
+            .nav-btn svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .testimonial-quote-mark {
+                font-size: 120px;
+                top: -5px;
+                left: -5px;
+            }
+
+            .testimonial-content {
+                font-size: 16px;
+                line-height: 1.7;
+            }
+
+            .testimonial-author img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .testimonial-dots {
+                bottom: -35px;
+            }
+
+            .dot {
+                width: 35px;
+                height: 3px;
+            }
+        }
+
+        /* Mobile Large (414px a 575px) */
+        @media screen and (min-width: 414px) and (max-width: 575px) {
+            .testimonials-slider {
+                min-height: 420px;
+                padding: 25px 20px;
+            }
+
+            .testimonial-nav {
+                padding: 0 15px;
+            }
+
+            .nav-btn {
+                width: 38px;
+                height: 38px;
+                opacity: 0.8;
+            }
+
+            .nav-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .testimonial-quote-mark {
+                font-size: 100px;
+            }
+
+            .testimonial-content {
+                font-size: 15px;
+                line-height: 1.6;
+                margin-bottom: 25px;
+            }
+
+            .testimonial-author {
+                gap: 15px;
+            }
+
+            .testimonial-author img {
+                width: 55px;
+                height: 55px;
+            }
+
+            .testimonial-author-info h4 {
+                font-size: 18px;
+            }
+
+            .testimonial-author-info p {
+                font-size: 13px;
+            }
+
+            .testimonial-dots {
+                gap: 10px;
+            }
+
+            .dot {
+                width: 30px;
+            }
+        }
+
+        /* Mobile Medium (375px a 413px) */
+        @media screen and (min-width: 375px) and (max-width: 413px) {
+            .testimonials-slider {
+                min-height: 440px;
+                padding: 20px 15px;
+            }
+
+            .testimonial-nav {
+                display: none;
+                /* Ocultar en móviles pequeños */
+            }
+
+            .testimonial-quote-mark {
+                font-size: 90px;
+                opacity: 0.03;
+            }
+
+            .testimonial-content {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .testimonial-author img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .testimonial-author-info h4 {
+                font-size: 17px;
+            }
+
+            .testimonial-author-info p {
+                font-size: 12px;
+            }
+
+            .testimonial-dots {
+                bottom: -30px;
+                gap: 8px;
+            }
+
+            .dot {
+                width: 28px;
+                height: 3px;
+            }
+        }
+
+        /* Mobile Small (320px a 374px) */
+        @media screen and (max-width: 374px) {
+            .testimonials-slider {
+                min-height: 460px;
+                padding: 20px 15px;
+            }
+
+            .testimonial-nav {
+                display: none;
+            }
+
+            .testimonial-quote-mark {
+                font-size: 80px;
+                opacity: 0.03;
+            }
+
+            .testimonial-content {
+                font-size: 14px;
+                line-height: 1.5;
+                margin-bottom: 20px;
+            }
+
+            .testimonial-author {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .testimonial-author img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .testimonial-author-info h4 {
+                font-size: 16px;
+            }
+
+            .testimonial-author-info p {
+                font-size: 12px;
+            }
+
+            .testimonial-dots {
+                bottom: -25px;
+                gap: 6px;
+            }
+
+            .dot {
+                width: 25px;
+                height: 2px;
+            }
+        }
+
+        /* Ajustes específicos para orientación landscape en móviles */
+        @media screen and (max-width: 767px) and (orientation: landscape) {
+            .testimonials-slider {
+                min-height: 280px;
+                padding: 20px 30px;
+            }
+
+            .testimonial-content {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .testimonial-quote-mark {
+                font-size: 80px;
+            }
+
+            .testimonial-author img {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        /* Ajustes para dispositivos con pantallas muy altas (modernos) */
+        @media screen and (min-height: 800px) and (max-width: 414px) {
+            .testimonials-slider {
+                min-height: 380px;
+            }
+        }
+
+        /* Soporte para pantallas retina y alta densidad de píxeles */
+        @media (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+            .testimonial-author img {
+                border-width: 2px;
+            }
+
+            .nav-btn {
+                border-width: 1.5px;
+            }
+        }
+    </style>
+
+
+
+
+    <style>
+        /* SOLUCIÓN CRÍTICA: Z-INDEX ALTO PARA EL MENÚ */
+        /* Añade esto en tus estilos críticos */
+        @media screen and (max-width: 768px) {
+            nav {
+                z-index: 9999999 !important;
+                /* Asegurar z-index ultra alto */
+                transform: translateX(100%) !important;
+                /* Inicialmente fuera de pantalla */
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            }
+
+            nav.active {
+                transform: translateX(0) !important;
+                /* Mostrar menú */
+                box-shadow: -15px 0 35px rgba(0, 0, 0, 0.3) !important;
+            }
+
+            .mobile-toggle {
+                z-index: 99999999 !important;
+                /* Mayor que el nav */
+            }
+
+            .menu-overlay {
+                z-index: 9999998 !important;
+                /* Justo debajo del nav */
+                background: rgba(0, 0, 0, 0.7) !important;
+                backdrop-filter: blur(5px) !important;
+            }
+
+            /* Forzar visibilidad de elementos hijos */
+            nav ul,
+            nav ul li,
+            nav ul li a {
+                position: relative !important;
+                z-index: 9999999 !important;
+            }
+        }
+
+        /* Fix adicional para asegurar que nada tape el menú */
+        * {
+            z-index: 9999 !important;
+            /* Limitar z-index de otros elementos */
+        }
+
+        /* Excepciones para elementos del menú */
+        header,
+        header *,
+        nav,
+        nav *,
+        .mobile-toggle,
+        .menu-overlay {
+            z-index: none !important;
+            /* No limitar estos elementos */
+        }
+    </style>
+
+    <!-- CSS adicional para forzar la visibilidad -->
+    <style>
+        /* Forzar que el nav esté visible cuando está activo */
+        @media screen and (max-width: 768px) {
+            nav.active {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                right: 0 !important;
+                /* Sombra más fuerte para destacar */
+                box-shadow: -20px 0 40px rgba(0, 0, 0, 0.9) !important;
+            }
+
+            /* Asegurar que el fondo del nav sea sólido */
+            nav.active::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: #0a192f;
+                z-index: -1;
+            }
+        }
+
+        /* Fix para elementos específicos que pueden causar problemas */
+        .hero,
+        .hero-parallax,
+        .hero-layer-1,
+        .hero-layer-2,
+        .hero-layer-3,
+        .hero-layer-4,
+        .parallax-section,
+        .services-particles,
+        .about-bg-elements,
+        .floating-elements,
+        .contact-grid {
+            z-index: 0 !important;
+        }
+
+        /* Asegurar que las imágenes no tapen el menú */
+        img {
+            position: relative;
+            z-index: 1 !important;
+        }
+
+        /* Fix específico para la sección hero que suele tener z-index alto */
+        .hero {
+            z-index: 1 !important;
+        }
+
+        .hero * {
+            z-index: inherit !important;
+        }
+    </style>
+
+    <style>
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 9999998;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+    </style>
 
 
 </head>
 
 <body>
+    <!-- Botón de WhatsApp Fijo y Visible -->
+    <!-- BOTÓN DE WHATSAPP - PRIMERO EN EL BODY CON ID -->
+    <a href="https://wa.me/573043404080?text=Hola%20MACOTO,%20me%20gustaría%20recibir%20más%20información%20sobre%20sus%20servicios."
+        class="whatsapp-fixed" id="whatsapp-main-button" target="_blank" rel="noopener noreferrer"
+        title="Contáctanos por WhatsApp"
+        style="position: fixed !important; bottom: 30px !important; right: 30px !important; z-index: 999999 !important; opacity: 1 !important; visibility: visible !important; display: flex !important;">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 35px; height: 35px; fill: white;">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.298-.018-.458.13-.606.134-.133.298-.345.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                fill="white" />
+        </svg>
+    </a>
+
+    <script>
+        (function () {
+            // Asegurar que el botón esté visible inmediatamente
+            var btn = document.getElementById('whatsapp-main-button');
+            if (btn) {
+                btn.style.cssText = 'position: fixed !important; bottom: 30px !important; right: 30px !important; width: 60px !important; height: 60px !important; background: #25D366 !important; border-radius: 50% !important; display: flex !important; justify-content: center !important; align-items: center !important; z-index: 999999 !important; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important; opacity: 1 !important; visibility: visible !important; transform: none !important;';
+                console.log('✅ WhatsApp button forzado a ser visible');
+            }
+        })();
+    </script>
+
+
     <!-- Script para limpiar caché y cookies -->
     <script src="assets/js/cache-cleaner.js"></script>
 
-    <!-- OCULTAR elementos de ruido/scanline -->
-    <!-- <div class="scanline"></div> -->
-    <!-- <div class="noise"></div> -->
-
     <!-- Header -->
+
     <header>
         <div class="container header-container">
             <a href="#" class="logo">MACOTO<span>.com.co</span></a>
             <button class="mobile-toggle">☰</button>
             <nav>
                 <ul>
-                    <li><a href="#home" class="active">Inicio</a></li>
+                    <li><a href="#home">Inicio</a></li>
                     <li><a href="#services">Servicios</a></li>
                     <li><a href="#about">Nosotros</a></li>
                     <li><a href="#testimonials">Testimonios</a></li>
@@ -684,6 +1322,7 @@
     </section>
 
     <!-- Testimonials Section -->
+    <!-- HTML para la sección de testimonios mejorada -->
     <section class="testimonials parallax-section" id="testimonials" data-scroll-speed="0.15">
         <div class="container">
             <div class="section-header">
@@ -691,41 +1330,84 @@
                 <h2>Lo Que Dicen Nuestros Clientes</h2>
                 <p>La satisfacción de nuestros clientes es nuestro mayor logro y motivación para seguir mejorando</p>
             </div>
-            <div class="testimonials-slider">
-                <div class="testimonial-item card-3d">
-                    <div class="testimonial-content">
-                        "La asesoría de MACOTO fue fundamental para encontrar el seguro que realmente necesitaba. Su
-                        equipo no solo me ayudó a entender las coberturas sino que me acompañó durante todo el proceso
-                        de reclamación cuando lo necesité."
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="assets/images/testimonial-1.jpg" alt="Carlos Mendoza" loading="lazy" width="60"
-                            height="60">
-                        <div class="testimonial-author-info">
-                            <h4>Carlos Mendoza</h4>
-                            <p>Gerente de Operaciones</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="testimonial-item card-3d">
-                    <div class="testimonial-content">
-                        "Después de comparar varias opciones, MACOTO nos ofreció la mejor solución para asegurar nuestra
-                        flota de vehículos. Su servicio personalizado y la rapidez con la que resuelven cualquier
-                        incidencia los hace realmente diferentes."
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="assets/images/testimonial-2.jpg" alt="Laura Jiménez" loading="lazy" width="60"
-                            height="60">
-                        <div class="testimonial-author-info">
-                            <h4>Laura Jiménez</h4>
-                            <p>Directora Logística</p>
+            <div class="testimonials-container">
+                <div class="testimonials-slider" id="testimonialSlider">
+                    <div class="testimonial-particles" id="testimonialParticles"></div>
+
+                    <div class="testimonial-quote-mark">"</div>
+
+                    <!-- Testimonio 1 -->
+                    <div class="testimonial-item active" data-index="0">
+                        <div class="testimonial-content">
+                            La asesoría de MACOTO fue fundamental para encontrar el seguro que realmente necesitaba. Su
+                            equipo no solo me ayudó a entender las coberturas sino que me acompañó durante todo el
+                            proceso
+                            de reclamación cuando lo necesité.
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="assets/images/testimonial-1.jpg" alt="Carlos Mendoza" loading="lazy">
+                            <div class="testimonial-author-info">
+                                <h4>Carlos Mendoza</h4>
+                                <p>Gerente de Operaciones</p>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Testimonio 2 -->
+                    <div class="testimonial-item" data-index="1">
+                        <div class="testimonial-content">
+                            Después de comparar varias opciones, MACOTO nos ofreció la mejor solución para asegurar
+                            nuestra
+                            flota de vehículos. Su servicio personalizado y la rapidez con la que resuelven cualquier
+                            incidencia los hace realmente diferentes.
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="assets/images/testimonial-2.jpg" alt="Laura Jiménez" loading="lazy">
+                            <div class="testimonial-author-info">
+                                <h4>Laura Jiménez</h4>
+                                <p>Directora Logística</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 3 (opcional - puedes agregar más) -->
+                    <div class="testimonial-item" data-index="2">
+                        <div class="testimonial-content">
+                            MACOTO transformó completamente nuestra visión sobre los seguros. Su enfoque tecnológico y
+                            humano nos permitió optimizar costos sin sacrificar coberturas. El equipo siempre está
+                            disponible y su respuesta es inmediata.
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="assets/images/testimonial-3.jpg" alt="Ana Rodríguez" loading="lazy">
+                            <div class="testimonial-author-info">
+                                <h4>Ana Rodríguez</h4>
+                                <p>CEO Startup Tecnológica</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navegación con flechas -->
+                    <div class="testimonial-nav">
+                        <button class="nav-btn prev" onclick="changeTestimonial(-1)">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                            </svg>
+                        </button>
+                        <button class="nav-btn next" onclick="changeTestimonial(1)">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Dots de navegación -->
+                    <div class="testimonial-dots" id="testimonialDots"></div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -863,339 +1545,325 @@
     <!-- JavaScript principal optimizado -->
     <script src="assets/js/main.js" defer></script>
     <!-- Navegación suave mejorada -->
-    <script src="assets/js/smooth-navigation.js" defer></script>
-    <!-- REMOVIDO: whatsapp-fixed.js (conflicto con script personalizado) -->
-
-    <!-- Script para arreglar salto de testimonios - VERSIÓN SIMPLE -->
+    <!--<script src="assets/js/smooth-navigation.js" defer></script>-->
+    <!-- Script Agresivo para Forzar Funcionamiento -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('🚀 DOM cargado - iniciando scripts');
+        (function () {
+            'use strict';
 
-            // 1. CREAR EL BOTÓN DE WHATSAPP INMEDIATAMENTE
-            function createWhatsAppButton() {
-                console.log('📱 Intentando crear botón WhatsApp...');
+            console.log('🚀 Iniciando sistema de protección completo');
 
-                // Verificar si ya existe
-                const existing = document.querySelector('.whatsapp-float');
-                if (existing) {
-                    console.log('⚠️ Botón WhatsApp ya existe:', existing);
-                    return existing;
+            // 1. PROTEGER BOTÓN DE WHATSAPP
+            function ensureWhatsAppVisible() {
+                var btn = document.getElementById('whatsapp-main-button');
+                if (!btn) {
+                    // Crear nuevo botón si no existe
+                    btn = document.createElement('a');
+                    btn.href = 'https://wa.me/573043404080?text=Hola%20MACOTO,%20me%20gustaría%20recibir%20más%20información%20sobre%20sus%20servicios.';
+                    btn.className = 'whatsapp-fixed';
+                    btn.id = 'whatsapp-main-button';
+                    btn.target = '_blank';
+                    btn.rel = 'noopener noreferrer';
+                    btn.title = 'Contáctanos por WhatsApp';
+                    btn.innerHTML = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 35px; height: 35px; fill: white;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.298-.018-.458.13-.606.134-.133.298-.345.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="white"/></svg>';
+                    document.body.appendChild(btn);
                 }
 
-                // Crear el botón
-                const whatsappButton = document.createElement('a');
-                whatsappButton.href = 'https://wa.me/573102759430?text=Hola%20MACOTO,%20me%20gustaría%20recibir%20más%20información%20sobre%20sus%20servicios.';
-                whatsappButton.className = 'whatsapp-float';
-                whatsappButton.target = '_blank';
-                whatsappButton.rel = 'noopener noreferrer';
+                // Forzar estilos
+                btn.style.cssText = 'position: fixed !important; bottom: 30px !important; right: 30px !important; width: 60px !important; height: 60px !important; background: #25D366 !important; border-radius: 50% !important; display: flex !important; justify-content: center !important; align-items: center !important; z-index: 999999 !important; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important; opacity: 1 !important; visibility: visible !important; transform: none !important;';
+            }
 
-                // Estilos directos para asegurar visibilidad
-                whatsappButton.style.cssText = `
-                    position: fixed !important;
-                    bottom: 30px !important;
-                    right: 30px !important;
-                    width: 60px !important;
-                    height: 60px !important;
-                    background: rgba(10, 25, 47, 0.7) !important;
-                    border: 2px solid #64ffda !important;
-                    border-radius: 50% !important;
-                    display: flex !important;
-                    justify-content: center !important;
-                    align-items: center !important;
-                    z-index: 999999 !important;
-                    opacity: 1 !important;
-                    visibility: visible !important;
-                    box-shadow: 0 0 15px rgba(100, 255, 218, 0.5) !important;
-                    top: auto !important;
-                    left: auto !important;
-                    transform: none !important;
-                    margin: 0 !important;
-                    padding: 0 !important;
-                    color: #64ffda !important;
-                    transition: all 0.3s ease !important;
-                    text-decoration: none !important;
-                `;
+            // 2. ARREGLAR MENÚ MÓVIL
+            function fixMobileMenu() {
+                var mobileToggle = document.querySelector('.mobile-toggle');
+                var nav = document.querySelector('nav');
 
-                // FORZAR posición después de agregar al DOM
-                document.body.appendChild(whatsappButton);
+                if (mobileToggle && nav) {
+                    // Remover listeners antiguos
+                    var newToggle = mobileToggle.cloneNode(true);
+                    mobileToggle.parentNode.replaceChild(newToggle, mobileToggle);
 
-                // IMPORTANTE: Forzar posicionamiento después de insertarlo
-                setTimeout(function () {
-                    whatsappButton.style.setProperty('position', 'fixed', 'important');
-                    whatsappButton.style.setProperty('bottom', '30px', 'important');
-                    whatsappButton.style.setProperty('right', '30px', 'important');
-                    whatsappButton.style.setProperty('top', 'auto', 'important');
-                    whatsappButton.style.setProperty('left', 'auto', 'important');
-                    whatsappButton.style.setProperty('z-index', '999999', 'important');
+                    // Agregar nuevo listener
+                    newToggle.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
 
-                    // Agregar eventos hover para efectos neón
-                    whatsappButton.addEventListener('mouseenter', function () {
-                        this.style.setProperty('background', 'rgba(100, 255, 218, 0.1)', 'important');
-                        this.style.setProperty('transform', 'translateY(-5px)', 'important');
-                        this.style.setProperty('box-shadow', '0 0 25px rgba(100, 255, 218, 0.8)', 'important');
+                        nav.classList.toggle('active');
+                        newToggle.textContent = nav.classList.contains('active') ? '✕' : '☰';
+
+                        console.log('Menu toggled:', nav.classList.contains('active'));
                     });
+                }
+            }
 
-                    whatsappButton.addEventListener('mouseleave', function () {
-                        this.style.setProperty('background', 'rgba(10, 25, 47, 0.7)', 'important');
-                        this.style.setProperty('transform', 'none', 'important');
-                        this.style.setProperty('box-shadow', '0 0 15px rgba(100, 255, 218, 0.5)', 'important');
+            // EJECUTAR TODO
+            function initializeEverything() {
+                ensureWhatsAppVisible();
+                fixMobileMenu();
+                // ... resto de funciones
+            }
+
+            // Ejecutar inmediatamente
+            initializeEverything();
+
+            // Verificar cada 500ms
+            setInterval(ensureWhatsAppVisible, 500);
+
+            console.log('✅ Sistema de protección iniciado completamente');
+        })();
+    </script>
+
+    <!-- JavaScript para el sistema de testimonios -->
+    <script>
+        (function () {
+            'use strict';
+
+            let currentTestimonial = 0;
+            let testimonialInterval;
+            let isTransitioning = false;
+
+            const testimonials = document.querySelectorAll('.testimonial-item');
+            const dotsContainer = document.getElementById('testimonialDots');
+            const particlesContainer = document.getElementById('testimonialParticles');
+
+            // Crear dots dinámicamente
+            function createDots() {
+                testimonials.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    if (index === 0) dot.classList.add('active');
+                    dot.onclick = () => goToTestimonial(index);
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            // Crear partículas decorativas
+            function createParticles() {
+                for (let i = 0; i < 5; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle-float';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 15 + 's';
+                    particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                    particlesContainer.appendChild(particle);
+                }
+            }
+
+            // Cambiar testimonio
+            function changeTestimonial(direction) {
+                if (isTransitioning) return;
+
+                const newIndex = direction === 'next' || direction === 1
+                    ? (currentTestimonial + 1) % testimonials.length
+                    : (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+
+                goToTestimonial(newIndex);
+            }
+
+            // Ir a testimonio específico
+            function goToTestimonial(index) {
+                if (isTransitioning || index === currentTestimonial) return;
+
+                isTransitioning = true;
+
+                // Quitar clases activas
+                testimonials[currentTestimonial].classList.remove('active', 'entering');
+                testimonials[currentTestimonial].classList.add('prev');
+                document.querySelectorAll('.dot')[currentTestimonial].classList.remove('active');
+
+                // Agregar clases al nuevo testimonio
+                currentTestimonial = index;
+                testimonials[currentTestimonial].classList.add('active', 'entering');
+                testimonials[currentTestimonial].classList.remove('prev');
+                document.querySelectorAll('.dot')[currentTestimonial].classList.add('active');
+
+                // Resetear transición
+                setTimeout(() => {
+                    testimonials.forEach((t, i) => {
+                        if (i !== currentTestimonial) {
+                            t.classList.remove('prev', 'entering');
+                        }
                     });
+                    isTransitioning = false;
+                }, 800);
 
-                    console.log('🔧 Posición forzada después de DOM');
-                    console.log('📍 Nueva posición:', whatsappButton.getBoundingClientRect());
-                }, 100);
-
-                // SVG del WhatsApp con estilo neón
-                whatsappButton.innerHTML = `
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="#64ffda" style="filter: drop-shadow(0 0 5px rgba(100, 255, 218, 0.7)); transition: all 0.3s ease;">
-                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                    </svg>
-                `;
-
-                console.log('✅ Botón WhatsApp creado y agregado al DOM:', whatsappButton);
-                console.log('📍 Posición del botón:', whatsappButton.getBoundingClientRect());
-
-                return whatsappButton;
+                // Reiniciar autoplay
+                resetAutoplay();
             }
 
-            // 2. CREAR EL BOTÓN INMEDIATAMENTE
-            console.log('🔨 Creando botón WhatsApp...');
-            const whatsappBtn = createWhatsAppButton();
-
-            // 3. VERIFICAR QUE ESTÉ EN EL DOM
-            setTimeout(function () {
-                const btnCheck = document.querySelector('.whatsapp-float');
-                console.log('🔍 Verificación después de 1s:', btnCheck);
-                if (btnCheck) {
-                    console.log('✅ Botón encontrado en DOM');
-                    console.log('📐 Estilos aplicados:', btnCheck.style.cssText);
-                    console.log('📍 BoundingRect:', btnCheck.getBoundingClientRect());
-                } else {
-                    console.log('❌ Botón NO encontrado en DOM');
-                }
-            }, 1000);
-
-            // 4. CONFIGURAR TESTIMONIOS
-            setTimeout(function () {
-                const testimonialItems = document.querySelectorAll('.testimonial-item');
-                if (testimonialItems.length > 0) {
-                    testimonialItems[0].classList.add('active');
-                    console.log('✅ Testimonios inicializados:', testimonialItems.length);
-                }
-            }, 100);
-
-            // 5. MÉTODO COMPLETAMENTE NUEVO: Usar coordenadas del viewport
-            function createFloatingButton() {
-                // Eliminar cualquier botón existente
-                const existingBtns = document.querySelectorAll('.whatsapp-float, .whatsapp-float-new, .whatsapp-viewport');
-                existingBtns.forEach(btn => btn.remove());
-
-                console.log('🚀 NUEVO MÉTODO: Coordenadas del viewport');
-
-                // Crear botón con enfoque completamente diferente
-                const btn = document.createElement('div'); // Usar DIV en lugar de A
-                btn.className = 'whatsapp-viewport';
-                btn.innerHTML = `
-                    <a href="https://wa.me/573102759430?text=Hola%20MACOTO,%20me%20gustaría%20recibir%20más%20información%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" style="
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        width: 100%;
-                        height: 100%;
-                        text-decoration: none;
-                        color: #64ffda;
-                    ">
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="#64ffda">
-                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                        </svg>
-                    </a>
-                `;
-
-                // Insertar al final del body
-                document.body.appendChild(btn);
-
-                // Función para posicionar usando coordenadas del viewport
-                function positionWithViewport() {
-                    const viewportWidth = window.innerWidth;
-                    const viewportHeight = window.innerHeight;
-                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-
-                    // Calcular posición exacta desde el viewport ACTUAL
-                    const rightOffset = 30;
-                    const bottomOffset = 30;
-                    const buttonSize = 60;
-
-                    // IMPORTANTE: Agregar el scroll para que siga al viewport
-                    const leftPosition = viewportWidth - buttonSize - rightOffset;
-                    const topPosition = scrollTop + viewportHeight - buttonSize - bottomOffset;
-
-                    console.log('📐 Calculando posición con scroll:');
-                    console.log('- Viewport:', viewportWidth + 'x' + viewportHeight);
-                    console.log('- Scroll:', scrollLeft + ',' + scrollTop);
-                    console.log('- Posición final:', leftPosition + ',' + topPosition);
-
-                    // Aplicar estilos directamente
-                    btn.style.cssText = `
-                        position: absolute !important;
-                        left: ${leftPosition}px !important;
-                        top: ${topPosition}px !important;
-                        width: ${buttonSize}px !important;
-                        height: ${buttonSize}px !important;
-                        background: rgba(10, 25, 47, 0.7) !important;
-                        border: 2px solid #64ffda !important;
-                        border-radius: 50% !important;
-                        z-index: 999999 !important;
-                        opacity: 1 !important;
-                        visibility: visible !important;
-                        box-shadow: 0 0 15px rgba(100, 255, 218, 0.5) !important;
-                        transition: all 0.3s ease !important;
-                        pointer-events: auto !important;
-                        display: flex !important;
-                        justify-content: center !important;
-                        align-items: center !important;
-                        right: auto !important;
-                        bottom: auto !important;
-                        margin: 0 !important;
-                        padding: 0 !important;
-                        transform: none !important;
-                    `;
-
-                    // Verificar posición después de aplicar
-                    setTimeout(() => {
-                        const rect = btn.getBoundingClientRect();
-                        const isInViewport = rect.x > 0 && rect.y > 0 && rect.right < viewportWidth && rect.bottom < viewportHeight;
-                        console.log('✅ Posición aplicada:', rect.x + ',' + rect.y);
-                        console.log('✅ ¿En viewport?', isInViewport);
-
-                        if (!isInViewport) {
-                            console.log('⚠️ No está en viewport, reajustando...');
-                            // Si no está en viewport, usar fixed como respaldo
-                            btn.style.setProperty('position', 'fixed', 'important');
-                            btn.style.setProperty('bottom', '30px', 'important');
-                            btn.style.setProperty('right', '30px', 'important');
-                            btn.style.setProperty('top', 'auto', 'important');
-                            btn.style.setProperty('left', 'auto', 'important');
-                        }
-                    }, 100);
-                }
-
-                // Aplicar posición inicial
-                positionWithViewport();
-
-                // Reposicionar en eventos MÁS FRECUENTEMENTE
-                window.addEventListener('resize', positionWithViewport);
-
-                let scrollTimeout;
-                window.addEventListener('scroll', function () {
-                    if (scrollTimeout) return;
-                    scrollTimeout = setTimeout(function () {
-                        positionWithViewport();
-                        scrollTimeout = null;
-                    }, 16); // 60fps para seguimiento suave
-                });
-
-                // Reposicionar más frecuentemente para asegurar seguimiento
-                setInterval(positionWithViewport, 100); // Cada 100ms
-
-                // Efectos hover
-                btn.addEventListener('mouseenter', function () {
-                    this.style.setProperty('background', 'rgba(100, 255, 218, 0.1)', 'important');
-                    this.style.setProperty('transform', 'translateY(-5px) scale(1.1)', 'important');
-                    this.style.setProperty('box-shadow', '0 0 25px rgba(100, 255, 218, 0.8)', 'important');
-                });
-
-                btn.addEventListener('mouseleave', function () {
-                    this.style.setProperty('background', 'rgba(10, 25, 47, 0.7)', 'important');
-                    this.style.setProperty('transform', 'none', 'important');
-                    this.style.setProperty('box-shadow', '0 0 15px rgba(100, 255, 218, 0.5)', 'important');
-                });
-
-                console.log('🎯 Botón creado con método viewport');
-                return btn;
+            // Autoplay
+            function startAutoplay() {
+                testimonialInterval = setInterval(() => {
+                    changeTestimonial('next');
+                }, 8000); // Cambiado de 5000ms a 8000ms (8 segundos)
             }
 
-            // Crear el botón inmediatamente
-            const viewportBtn = createFloatingButton();
-
-            // Verificar cada segundo que esté en la posición correcta
-            setInterval(() => {
-                const btn = document.querySelector('.whatsapp-viewport');
-                if (btn) {
-                    const rect = btn.getBoundingClientRect();
-                    const vw = window.innerWidth;
-                    const vh = window.innerHeight;
-
-                    // Si está fuera del viewport visible, reposicionar
-                    if (rect.right > vw || rect.bottom > vh || rect.left < 0 || rect.top < 0) {
-                        console.log('🔧 Reposicionando fuera del viewport');
-                        createFloatingButton(); // Recrear completamente
-                    }
-                }
-            }, 1000);
-
-            // 6. LÓGICA DEL MENÚ - Actualizada para la nueva clase
-            const mobileToggle = document.querySelector('.mobile-toggle');
-            const nav = document.querySelector('nav');
-            const menuLinks = document.querySelectorAll('nav ul li a');
-
-            function getWhatsAppButton() {
-                return document.querySelector('.whatsapp-viewport');
+            function resetAutoplay() {
+                clearInterval(testimonialInterval);
+                startAutoplay();
             }
 
-            // Solo mostrar/ocultar basado en menú
-            if (mobileToggle && nav) {
-                mobileToggle.addEventListener('click', function () {
-                    setTimeout(function () {
-                        const btn = getWhatsAppButton();
-                        if (btn) {
-                            if (nav.classList.contains('active')) {
-                                btn.style.opacity = '0';
-                                console.log('🙈 WhatsApp ocultado - menú abierto');
-                            } else {
-                                btn.style.opacity = '1';
-                                console.log('👁️ WhatsApp mostrado - menú cerrado');
-                            }
-                        }
-                    }, 100);
-                });
-            }
+            // Pausar en hover
+            const slider = document.getElementById('testimonialSlider');
+            slider.addEventListener('mouseenter', () => clearInterval(testimonialInterval));
+            slider.addEventListener('mouseleave', startAutoplay);
 
-            // Al hacer clic en enlaces del menú
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function () {
-                    const btn = getWhatsAppButton();
-                    if (btn) {
-                        btn.style.opacity = '1';
-                        console.log('👁️ WhatsApp mostrado - clic en menú:', this.textContent);
-                    }
+            // Inicializar
+            createDots();
+            createParticles();
+            startAutoplay();
 
-                    // Cerrar menú móvil
-                    if (nav && nav.classList.contains('active')) {
-                        nav.classList.remove('active');
-                        if (mobileToggle) mobileToggle.textContent = '☰';
-                    }
-                });
-            });
-
-            // Verificación final
-            setTimeout(function () {
-                const finalBtn = getWhatsAppButton();
-                if (finalBtn) {
-                    const rect = finalBtn.getBoundingClientRect();
-                    console.log('🎉 BOTÓN VIEWPORT FINAL - Posición:', rect.x + ',' + rect.y);
-                    console.log('🎉 ¿Visible en viewport?', rect.x > 0 && rect.y > 0 && rect.right < window.innerWidth && rect.bottom < window.innerHeight);
-                } else {
-                    console.log('❌ No se encontró botón viewport');
-                }
-            }, 2000);
-
-            console.log('🎯 Scripts inicializados completamente');
-        });
+            // Hacer funciones globales para los botones
+            window.changeTestimonial = changeTestimonial;
+        })();
     </script>
 
 
 
+
+    <!-- Script dedicado para el menú móvil -->
+    <script>
+        (function () {
+            'use strict';
+
+            console.log('🔧 Iniciando fix del menú móvil...');
+
+            // Esperar a que el DOM esté listo
+            function initMobileMenu() {
+                const mobileToggle = document.querySelector('.mobile-toggle');
+                const nav = document.querySelector('nav');
+                const header = document.querySelector('header');
+
+                if (!mobileToggle || !nav) {
+                    console.log('❌ No se encontraron elementos del menú');
+                    return;
+                }
+
+                console.log('✅ Elementos encontrados:', { mobileToggle, nav });
+
+                // Crear overlay si no existe
+                let overlay = document.querySelector('.menu-overlay');
+                if (!overlay) {
+                    overlay = document.createElement('div');
+                    overlay.className = 'menu-overlay';
+                    document.body.appendChild(overlay);
+                }
+
+                // Remover todos los event listeners antiguos
+                const newToggle = mobileToggle.cloneNode(true);
+                mobileToggle.parentNode.replaceChild(newToggle, mobileToggle);
+
+                // Función para abrir/cerrar menú
+                function toggleMenu() {
+                    const isActive = nav.classList.contains('active');
+
+                    if (isActive) {
+                        // Cerrar menú
+                        nav.classList.remove('active');
+                        overlay.classList.remove('active');
+                        newToggle.textContent = '☰';
+                        document.body.style.overflow = '';
+                        console.log('📱 Menú cerrado');
+                    } else {
+                        // Abrir menú
+                        nav.classList.add('active');
+                        overlay.classList.add('active');
+                        newToggle.textContent = '✕';
+                        document.body.style.overflow = 'hidden';
+                        console.log('📱 Menú abierto');
+                    }
+                }
+
+                // Event listener para el botón
+                newToggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleMenu();
+                });
+
+                // Cerrar menú al hacer clic en el overlay
+                overlay.addEventListener('click', toggleMenu);
+
+                // Cerrar menú al hacer clic en un enlace
+                const navLinks = nav.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function () {
+                        if (window.innerWidth <= 768) {
+                            nav.classList.remove('active');
+                            overlay.classList.remove('active');
+                            newToggle.textContent = '☰';
+                            document.body.style.overflow = '';
+                        }
+                    });
+                });
+
+                // Manejar cambio de tamaño de ventana
+                let resizeTimer;
+                window.addEventListener('resize', function () {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(function () {
+                        if (window.innerWidth > 768) {
+                            nav.classList.remove('active');
+                            overlay.classList.remove('active');
+                            newToggle.textContent = '☰';
+                            document.body.style.overflow = '';
+                        }
+                    }, 250);
+                });
+
+                console.log('✅ Menú móvil inicializado correctamente');
+            }
+
+            // Inicializar cuando el DOM esté listo
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMobileMenu);
+            } else {
+                initMobileMenu();
+            }
+
+            // Reintentar después de un momento por si hay conflictos
+            setTimeout(initMobileMenu, 500);
+        })();
+    </script>
+
+    <script>
+        // Reemplaza tu script actual del menú móvil con este
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const nav = document.querySelector('nav');
+            const body = document.body;
+
+            // Crear overlay si no existe
+            let overlay = document.createElement('div');
+            overlay.className = 'menu-overlay';
+            document.body.appendChild(overlay);
+
+            function toggleMenu() {
+                nav.classList.toggle('active');
+                overlay.classList.toggle('active');
+                mobileToggle.textContent = nav.classList.contains('active') ? '✕' : '☰';
+                body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+            }
+
+            // Event Listeners
+            mobileToggle.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu);
+
+            // Cerrar menú al hacer clic en enlaces
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) toggleMenu();
+                });
+            });
+
+            // Cerrar menú al redimensionar
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768 && nav.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
