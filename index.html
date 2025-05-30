@@ -43,7 +43,9 @@
     <meta property="og:title" content="MACOTO - Intermediarios de Seguros en Bogotá">
     <meta property="og:description"
         content="Especialistas en intermediación de seguros con más de 5 años de experiencia. Seguros empresariales y personales en Colombia.">
-    <meta property="og:image" content="https://macoto.com.co/assets/images/macoto-og-image.jpg">
+    <meta property="og:image" content="https://macoto.com.co/assets/images/macoto-logo-social.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="MACOTO Intermediarios de Seguros - Protección Inteligente">
     <meta property="og:site_name" content="MACOTO">
     <meta property="og:locale" content="es_CO">
@@ -54,7 +56,7 @@
     <meta property="twitter:title" content="MACOTO - Intermediarios de Seguros en Bogotá">
     <meta property="twitter:description"
         content="Especialistas en intermediación de seguros con más de 5 años de experiencia. Seguros empresariales y personales en Colombia.">
-    <meta property="twitter:image" content="https://macoto.com.co/assets/images/macoto-twitter-image.jpg">
+    <meta property="twitter:image" content="https://macoto.com.co/assets/images/macoto-logo-social.png">
 
     <!-- CANONICAL URL -->
     <link rel="canonical" href="https://macoto.com.co/">
@@ -67,8 +69,18 @@
         "name": "MACOTO Intermediarios de Seguros",
         "description": "Intermediarios de seguros especializados en seguros empresariales y personales en Bogotá, Colombia",
         "url": "https://macoto.com.co",
-        "logo": "https://macoto.com.co/assets/images/macoto-logo.png",
-        "image": "https://macoto.com.co/assets/images/macoto-og-image.jpg",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://macoto.com.co/assets/images/favicon-512x512.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Logo de MACOTO Intermediarios de Seguros"
+        },
+        "image": [
+            "https://macoto.com.co/assets/images/favicon-192x192.png",
+            "https://macoto.com.co/assets/images/favicon-512x512.png",
+            "https://macoto.com.co/assets/images/macoto-logo-social.png"
+        ],
         "telephone": "+57-319-454-8858",
         "email": "contacto@macoto.com.co",
         "address": {
@@ -112,9 +124,38 @@
     </script>
 
     <!-- FAVICON PARA MACOTO -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- ============================================
+         FAVICON Y ICONOS - IMPLEMENTACIÓN COMPLETA
+         ============================================ -->
+
+    <!-- Favicon tradicional -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Favicons para diferentes tamaños -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="/assets/images/favicon-144x144.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/favicon-512x512.png">
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-icon-180x180.png">
+
+    <!-- Theme Colors -->
     <meta name="theme-color" content="#0a192f">
+    <meta name="msapplication-navbutton-color" content="#0a192f">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- CSS Principal -->
     <link rel="stylesheet" href="assets/css/styles.css">
